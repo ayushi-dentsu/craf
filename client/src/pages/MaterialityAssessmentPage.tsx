@@ -37,7 +37,7 @@ export function MaterialityAssessmentPage() {
       )}
       <MaterialityPage
         data={materialityData as Parameters<typeof MaterialityPage>[0]['data']}
-        significantAccounts={(accountsData as Parameters<typeof MaterialityPage>[0]['significantAccounts']) ?? []}
+        significantAccounts={Array.isArray(accountsData) ? (accountsData as Parameters<typeof MaterialityPage>[0]['significantAccounts']) : []}
         onSave={(values) => saveMutation.mutate(values)}
         isSaving={saveMutation.isPending}
       />
