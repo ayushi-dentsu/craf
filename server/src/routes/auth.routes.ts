@@ -56,7 +56,8 @@ router.post('/login', async (req: Request, res: Response) => {
       name: user.name,
       role: user.role,
     });
-  } catch {
+  } catch (err) {
+    console.error('[AUTH] Login error:', err);
     res.status(500).json({
       status: 500,
       code: 'AUTH_SERVER_ERROR',
