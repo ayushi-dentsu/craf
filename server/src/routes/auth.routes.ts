@@ -58,10 +58,11 @@ router.post('/login', async (req: Request, res: Response) => {
     });
   } catch (err) {
     console.error('[AUTH] Login error:', err);
+    const detail = err instanceof Error ? err.message : String(err);
     res.status(500).json({
       status: 500,
       code: 'AUTH_SERVER_ERROR',
-      message: 'An internal error occurred during authentication.',
+      message: `Authentication error: ${detail}`,
       timestamp: new Date().toISOString(),
     });
   }
