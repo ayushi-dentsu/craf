@@ -127,6 +127,25 @@ export function getScenarioData(): AllScenarioData | null {
   return _scenarioData;
 }
 
+/**
+ * Lazily loads scenario data from the database if not already in memory.
+ * This handles the case where the server starts without running seed in-process.
+ */
+export async function ensureScenarioData(): Promise<AllScenarioData | null> {
+  if (_scenarioData) return _scenarioData;
+
+  const { PrismaClient } = await import('@prisma/client');
+  const prisma = new PrismaClient();
+  try {
+    const assessmentUnits = await prisma.assessmentUnit.findMany();
+    if (assessmentUnits.length === 0) return null;
+    await seedScenarioData(prisma, assessmentUnits);
+    return _scenarioData;
+  } finally {
+    await prisma.$disconnect();
+  }
+}
+
 
 // ── Scenario 1: Audit Finding Remediation (AU028 — Trade Finance) ─────────
 

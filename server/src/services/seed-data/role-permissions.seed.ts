@@ -70,6 +70,15 @@ const PERMISSIONS: PermissionDef[] = [
   { role: 'ComplianceMonitoring', resource: 'assessment-units', action: 'read', scope: 'all' },
   { role: 'ComplianceMonitoring', resource: 'controls', action: 'read', scope: 'all' },
   { role: 'ComplianceMonitoring', resource: 'compliance', action: 'read', scope: 'all' },
+
+  // Comparison — read access for all roles that have dashboard read
+  { role: 'GCCO', resource: 'comparison', action: 'read', scope: 'all' },
+  { role: 'GCO', resource: 'comparison', action: 'read', scope: 'all' },
+  { role: 'HeadCompliance', resource: 'comparison', action: 'read', scope: 'all' },
+  { role: 'HeadCPR', resource: 'comparison', action: 'read', scope: 'all' },
+  { role: 'CGAdvisory', resource: 'comparison', action: 'read', scope: 'all' },
+  { role: 'AUHead', resource: 'comparison', action: 'read', scope: 'assigned' },
+  { role: 'ComplianceMonitoring', resource: 'comparison', action: 'read', scope: 'all' },
 ];
 
 export async function seedRolePermissions(prisma: PrismaClient): Promise<void> {

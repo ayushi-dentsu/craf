@@ -8,6 +8,6 @@ export { seedAssessmentUnits } from './assessment-units.seed.js';
 export { seedObligations } from './obligations.seed.js';
 export { seedControls } from './controls.seed.js';
 export { seedRiskData } from './risk-data.seed.js';
-export { seedScenarioData, getScenarioData } from './scenario-data.seed.js';
+export { seedScenarioData, getScenarioData, ensureScenarioData } from './scenario-data.seed.js';
 export { seedUsers } from './users.seed.js';
 export { seedRolePermissions } from './role-permissions.seed.js';

@@ -3,7 +3,7 @@ import { MaterialityPage } from '../components/materiality/MaterialityPage';
 import { getMateriality, saveMateriality, getSignificantAccounts } from '../services/materiality.service';
 
 export function MaterialityAssessmentPage() {
-  const { data: materialityData, isLoading } = useQuery({
+  const { data: materialityData, isLoading, error } = useQuery({
     queryKey: ['materiality'],
     queryFn: () => getMateriality(),
   });
@@ -28,6 +28,13 @@ export function MaterialityAssessmentPage() {
   return (
     <div className="space-y-5">
       <h1 className="text-xl font-semibold text-foreground">Materiality Assessment</h1>
+      {error && (
+        <div className="rounded-lg border border-amber-300 bg-amber-50 p-4 dark:border-amber-700 dark:bg-amber-950/30">
+          <p className="text-sm text-amber-800 dark:text-amber-200">
+            No existing materiality assessment found. Enter financial inputs below to create one.
+          </p>
+        </div>
+      )}
       <MaterialityPage
         data={materialityData as Parameters<typeof MaterialityPage>[0]['data']}
         significantAccounts={(accountsData as Parameters<typeof MaterialityPage>[0]['significantAccounts']) ?? []}

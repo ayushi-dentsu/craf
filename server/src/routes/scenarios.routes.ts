@@ -10,7 +10,7 @@
 import { Router, type Request, type Response, type NextFunction } from 'express';
 import { authenticate } from '../middleware/auth.middleware.js';
 import { authorize } from '../middleware/rbac.middleware.js';
-import { getScenarioData } from '../services/seed-data/index.js';
+import { ensureScenarioData } from '../services/seed-data/index.js';
 import { NotFoundError } from '../middleware/error-handler.middleware.js';
 
 const router = Router();
@@ -19,9 +19,9 @@ router.use(authenticate);
 router.use(authorize('dashboard', 'read'));
 
 // GET /api/scenarios — all scenario data
-router.get('/', (_req: Request, res: Response, next: NextFunction) => {
+router.get('/', async (_req: Request, res: Response, next: NextFunction) => {
   try {
-    const data = getScenarioData();
+    const data = await ensureScenarioData();
     if (!data) {
       throw new NotFoundError('Scenario data not available. Please run seed first.');
     }
@@ -32,9 +32,9 @@ router.get('/', (_req: Request, res: Response, next: NextFunction) => {
 });
 
 // GET /api/scenarios/:scenarioId — specific scenario (1, 2, or 3)
-router.get('/:scenarioId', (req: Request, res: Response, next: NextFunction) => {
+router.get('/:scenarioId', async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const data = getScenarioData();
+    const data = await ensureScenarioData();
     if (!data) {
       throw new NotFoundError('Scenario data not available. Please run seed first.');
     }
