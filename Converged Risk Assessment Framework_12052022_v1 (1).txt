@@ -1,0 +1,1466 @@
+
+ICICI Bank Limited
+Converged Risk Assessment Framework
+
+
+	•	Overview
+
+Converged Risk Assessment framework outlines the methodology for the assessment of Compliance and Financial Reporting Risk impacting the functioning of the Bank covering the products and processes at the level of Business and/or Operations units and Support functions of the Bank. 
+It involves identification of applicable compliance requirements and associated risks, materiality assessment for significant accounts across products and processes, inherent and residual risk assessment and scoring. It further involves use of a converged risk assessment and scoring methodology by obtaining inputs on set parameters from various stakeholders to assess the inherent risk for the assessment unit. The methodology for risk assessment will be followed by the Bank. 
+	•	Objectives of the framework
+
+The key objectives of the Converged Risk Assessment framework are as:
+	•	Converged Risk Assessment covering Financial Reporting Risk (FRR) and Compliance Risk 
+	•	Lay down base procedure for maintenance of a unified repository of risks and controls
+	•	Standardise risk assessment procedures and parameters across Compliance and Financial Reporting risk
+	•	Facilitate proactive identification and management of regulatory focus areas
+	•	Develop comprehensive testing procedures supported through use of analytics
+	•	Facilitate ongoing monitoring mechanism along with clearly defined roles and responsibilities across the three lines of defence 
+	•	Define procedures for control rationalization thereby reducing the cost of compliance
+	•	Enable single view of control environment across the Bank
+	•	Lay out the architecture for technology enabled convergent risk assessment
+
+	•	Governance Structure 
+
+The Group Chief Compliance Officer (GCCO) will be the owner of the framework and will be primarily responsible for approval and implementation of the framework. Following are the details of key roles and responsibilities with respect to the framework:
+	•	Group Compliance Officer (GCO)
+	•	Set ‘tone at the top’ on the need and importance of managing compliance and financial reporting risk
+	•	Promote a culture to facilitate smooth risk management process for compliance and financial reporting risk
+	•	Review and approve the Converged Risk Assessment Framework
+	•	Ensure seamless implementation of the framework across the Bank 
+	•	Interact with regulators to discuss matters related to regulatory compliance which may pose a significant compliance risk for the Bank
+	•	Promote a compliance culture within the Bank 
+	•	Coordination for identification and management of the Bank’s compliance risk
+	•	Act as a nodal point of contact between the Bank and the regulators
+	•	Design, implement and maintain the Converged Risk Assessment framework
+	•	Facilitate trainings on compliance risks and its importance
+	•	Approve and implement the procedures for effective communication of compliance expectations within the Bank
+	•	Head of Compliance and ICOFR
+	•	Develop the Converged Risk Assessment framework 
+	•	Define the roles and responsibilities of the Compliance Monitoring team and ICOFR Compliance team
+	•	Head of Compliance Process Re-Engineering
+	•	Facilitate technology enablement for implementation of the framework
+3.1 Roles and Responsibilities
+
+Sr. No.
+Processes
+Responsibilities
+Frequency
+1
+Review and approval of Converged Risk Assessment Framework
+Audit Committee
+Annual (TBD)
+2
+Assessment Unit (AU) identification
+Head - ICOFR and Compliance Monitoring team
+Annual
+3
+Cluster identification
+CG Advisory team
+Annual
+4
+Cluster to theme mapping
+CG Advisory Group Head 
+Annual
+5
+Identification of Compliance obligations at AU level
+CG Advisory team
+Annual
+6
+Identification and implementation of changes to RCM (Compliance and ICOFR Risks)
+Head of Assessment Unit
+Ongoing
+7
+Approving Changes in RCM
+Changes in Compliance risk – CG Advisory
+Changes in Financial Reporting Risk – ICOFR Monitoring team
+Ongoing
+8
+Inherent Risk Assessment - Likelihood Assessment
+System Generated
+Annual
+9
+Inherent Risk Assessment - Impact Assessment
+System Generated
+Annual
+10
+Materiality Assessment for ICOFR
+ICOFR team
+Annual
+11
+Control Quality Assessment (Design Effectiveness)
+Assessment Unit
+Annual/As per defined frequency
+12
+Control Performance Assessment - KCI Monitoring results
+Compliance Monitoring team
+Ongoing
+13
+Control Performance Assessment - Fist line Self-Assessment
+Assessment Unit
+Annual/As per defined frequency
+14
+Control Performance Assessment - Control Testing results
+System Generated
+Annual/As per defined frequency
+15
+Residual Risk Assessment
+ICOFR and Compliance Monitoring team
+Annual
+16
+Rating Override
+Group Chief Compliance Officer (GCCO)
+Event Based
+
+
+	•	Components of Converged Risk Assessment framework 
+
+4.1 Assessment Units (AU) Identification and mapping
+
+4.1.1 Defining AUs 
+For performing convergent risk assessment, the user groups within the Bank will be segregated into various units called ‘Assessment Units’ based on key business groups and support functions. Each assessment unit will be determined on the basis of:
+	•	Current business alignment
+	•	Alignment and specialization of Compliance Group 
+	•	Current business performance and monitoring 
+	•	Management oversight and control
+The AUs will be aligned to the prevailing Management Organization (MO) structure. 
+The Head - ICOFR and Compliance Monitoring team will be responsible for determining any changes in the list of AUs as and when required. The list of AUs will be reviewed on an Annual basis. An earlier evaluation of assessment units may be done under exceptional circumstances basis mid-year changes in organization and reporting structures.
+Any modification to the list of AUs will be reviewed by the Head of Compliance and ICOFR monitoring.
+The Compliance Technology team coordinator will be responsible for enabling the corresponding updates in the SAS GCM system.
+For a detailed listing of Assessment Units (AUs) as per the current Management Organization (MO) structure, refer Annexure I
+4.1.2 Cluster Identification
+The compliance universe consisting of various internal policies or external regulations, acts, statutes, etc. will be different for each Assessment Unit. Hence, it will be appropriate to assess the Compliance risk profile of each Assessment Unit based on the regulations with which it needs to comply.  
+In order to complete the risk assessment within a reasonable time and to arrive at a meaningful output, it is necessary to have a repository of applicable regulatory circulars and corresponding compliance obligations for each AU. 
+The regulatory circulars will be group into clusters based on the following:
+	•	Master directions and their applicability to products/ processes
+	•	New regulations 
+	•	Common compliance/ risk themes
+Considering the Management Organization (MO) structure of the Bank, one cluster of regulations may be applicable to one or more Assessment Units (AUs). 
+Thus, it will be imperative to define the list of regulatory circulars applicable to an AU.
+
+4.1.3 Circular to Compliance theme mapping
+
+The purpose of theme-based reviews is to gather sufficient documented evidence to enable a conclusion and testimony as to whether or not the controls as documented are operating in practice. Thus, theme-based risk review involves on-site evaluation of actual transactions and controls by the Compliance testing unit, to gain sufficient assurance that the prescribed internal controls are operating effectively. 
+Theme based risk review is important for the following reasons:
+	•	Identification of potential weaknesses in terms of risk of non-compliance and facilitation of further improvements of the compliance risk controls.
+	•	Mitigation of weaknesses identified
+	•	As a key input for Compliance Risk Assessment
+The theme-based review plan enables the Compliance Group to understand and articulate the themes / AUs/ regulatory clusters / controls to be reviewed along with the frequency of review. The size and scale of the bank’s operations, complexity of products involved, jurisdictions in which the Bank is operating etc. necessitate the review plan to be developed in a risk sensitive manner. 
+A risk-based approach provides flexibility in use of compliance resources whilst also being able to add value by ensuring leading practices are being implemented across the businesses. Thus, the aim of this approach is to:
+	•	Ensure that the overall intensity of the theme-based risk review plan is proportionate to the compliance risk that each AU poses for the bank
+	•	Provide reasonable assurance to senior management and regulators that key potential regulatory risks are being assessed and appropriately actioned. 
+The preparation of thematic review plan and the timelines for the same will be decided by the compliance and ICOFR team which will be subjected to review by the CG Advisory Group Head to identify any modifications required to bring the same in line with changes, if any, in the overall business / regulatory environment. Major changes to the plan should be carried out in consultation with the Group Chief Compliance Officer (GCCO) of the Bank. Further, the ICOFR and Compliance monitoring team should also document changes to the plan along with underlying rationale for the same.
+	•	Each of the regulatory circular will be mapped to one of the following regulatory themes based on the underlying nature of the compliance: Complexity of product/ process to which regulation pertains
+	•	Emerging regulatory focus areas identified through
+	•	Risk based supervision by the RBI
+	•	New regulatory themes
+	•	Repeat internal/ external audit findings
+	•	External fraud events
+	•	Compliance breach reports
+Each of the regulatory circular will be mapped to one of the regulatory themes present in the annexure based on the underlying nature of the compliance requirements.
+
+The CG Advisory Group Heads in conjunction with Business Heads will be responsible for determining the Compliance themes. and will present to the Group Compliance Officer for his approval. Post approval from the GCCO, the same will be presented to the ACM. The list of themes will be reviewed on Annually. However, in case of any external events, the themes can be reviewed on a need basis. 
+Any modifications to the list of themes will be reviewed by the Head of Compliance and ICOFR monitoring. and approved by the Group Compliance Officer. Post approval from the GCCO, the same will be presented to the ACM.
+Post approval from the Group Compliance Officer, the Compliance Technology team coordinator will be responsible for enabling the corresponding updates in the SAS GCM system.
+	•	Compliance obligations at AU level
+
+After identifying the list of applicable circulars at AU level and mapping the circulars to corresponding Compliance/ Risk theme, the circulars will be reviewed to identify specific compliance obligations emanating out of the same. Each compliance obligation will be documented with below details:
+	•	Regulatory authority
+	•	Regulation reference
+	•	Regulation data
+	•	Regulation name 
+	•	Reference regulation paragraph
+	•	Compliance obligation 
+	•	Owner within the AU
+	•	Compliance frequency
+	•	Compliance/ risk theme
+
+CG Advisory team members mapped to the respective AUs shall be responsible for the following:
+	•	Annual review of listing of the applicable regulations
+	•	Change management of the compliance obligations inventory 
+4.1.5 Rationalization of Risks and Controls (RCMs) at AU level
+
+For the purpose of converged risk assessment, it will be imperative to identify the compliance and financial reporting risk at an Assessment Unit (AU) level. To achieve this objective, the existing repository of ICOFR RCMs will be leveraged and rationalized to arrive at a comprehensive listing of applicable Financial risks and controls. The Compliance RCM is built as part of the converged and rationalized RCMs. The rationalization will take into consideration the following:
+	•	Using the compliance obligations inventory applicable to the AU, compliance risks will be identified
+	•	Existing RCMs applicable to the AU will be enhanced to incorporate missing compliance risks, if any
+	•	Operational risks not having any impact from financial reporting (ICOFR) perspective and any other redundant risks and controls will be eliminated
+Converged RCMs will be documented such that compliance and financial reporting risk having common controls are clubbed and risk assessment can be carried out at a common ground.
+4.1.6 Change Management and Periodic reviews of RCM
+
+	•	The converged RCM shall be updated by the respective assessment units on the basis of triggers such as regulatory notifications, changes in internal policies and processes (processes are reviewed once in 1,2- or 3-years basis importance). 
+	•	The changes in compliance obligations and attributes of risk and control will be reviewed and approved by the Head - ICOFR and Compliance Monitoring team.
+	•	The periodic reviews of RCMs shall be conducted as per Bank’s policy.
+
+	•	Risk Assessment 
+
+ The risk assessment will be system generated basis auto-trigger during the quarter January to March every year. The results of this assessment will be used for planning the Compliance testing and ICOFR monitoring activities.
+In case of disagreements on the Risk Assessment with the AU heads, the ICOFR and Compliance Monitoring team member shall document the rationale of Risk Assessment, including points of difference, and discuss the same with the Chief Compliance Officer. Based on the feedback from the Chief Compliance Officer, the Inherent Risk Assessment would be finalized.
+	•	Inherent risk assessment
+Inherent risk is defined as ‘the status of risk (measured through impact and/or likelihood) without considering any direct controls that the Bank may already have in place’.  In other words, it means the risk embedded in the business/ operations undertaken by the Bank without considering the control environment.
+The inherent risk assessment is done using a Top-Down approach, whereby the assessment is done at an AU level for various compliance/ risk themes. 
+
+The rating score of likelihood and impact is multiplied to arrive at the inherent risk score. This assessment helps determine which AUs are riskier than others on account of the inherent nature/ complexity of their products or processes and within an individual AU, which clusters of regulations are riskier. 
+	•	Likelihood assessment
+Likelihood is the probability of occurrence of risk. Following parameters are evaluated for arriving at the likelihood score of an Assessment Unit (AU) for a definite period, 
+	•	Business/ transaction volumes 
+	•	Complexity or changes in products and systems (new product/ system roll-out)
+	•	No. of regulatory returns (Critical/ non-critical returns/ feeder units to regulatory returns)
+	•	Number of compliance breaches observed
+	•	Number of ICOFR control failures 
+	•	No. of Customer complaints
+Since the above parameters are applicable for an assessment unit as a whole, the assessment of likelihood of occurrence would be assessed for at assessment unit level as whole. The above-mentioned parameters need to be rated for each AU based on the following pattern:
+Sr. No
+Parameter
+Rating
+
+
+Almost certain (25)
+Likely (20)
+Possible (15)
+Unlikely (10)
+Rare (5)
+1.
+Increase in business/ transaction volumes
+Very High increase – more than 50%
+Substantial increase – more than 30% - 50%
+Moderate increase – (20 to 30%)
+Low increase – (5 to 20%)
+Very low or no increase <5%
+
+2.
+Complexity or changes in products and systems
+
+*Score of complexity will be taken highest of system and product)
+Product Complexity - High
+
+System Complexity >=25
+Product Complexity - NA
+
+System Complexity >=20 & <25
+Product Complexity - Medium
+
+System Complexity >=15 & <20
+Product Complexity - NA
+
+System Complexity
+>=5 & <15
+Product Complexity – Low
+
+System Complexity <5
+3.
+Number of regulatory returns (Critical/ non-critical returns/ feeder units to regulatory returns)
+More than 15 returns
+11-15 returns
+6-10 returns
+1-5 returns
+No returns
+4.
+Number of compliance breaches reported in the previous 12 months
+More than 1
+NA
+
+1
+NA
+
+0
+
+5. 
+Number of ICOFR control failures in previous 12 months
+More than 1
+NA
+1
+NA
+
+0
+
+6.
+No. of Customer Complaints
+ITG – 25
+Allied – as per related AU
+Actual – Basis the actual number of comp.
+>=25
+>=20 & <25
+>=15 & <20
+>=5 & <15
+<5
+
+
+
+
+
+	•	Scaling to be done for Likelihood Score 
+
+Score
+Scale down/up
+>5 and < 7.5
+5
+>=7.5 and <= 10
+10
+>10 and <12.5
+10
+>=12.5 and <= 15
+15
+>15 and < 17.5
+15
+>=17.5 and <= 20
+20
+>20 and < 22.5
+20
+>=22.5 and <= 25
+25
+
+At AU level, the SAS GCM system will auto-trigger the risk assessment for all the AUs during the quarter January to March every year. The results of the assessment will be used for planning the Compliance testing and ICOFR monitoring activities for the upcoming Financial Year. 
+The SAS GCM system will automatically assign the rating against each of the parameter and the likelihood rating will be derived by rounding of average score against each of the parameter. In case of non-availability of data, the compliance officer will assign the ratings.
+Likelihood Rating
+Likelihood Score
+Almost certain
+25
+Likely
+20
+Possible
+15
+Unlikely
+10
+Rare
+5
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	•	Impact assessment
+Impact is the ‘financial and/or reputation loss’ suffered by the Bank as a result of non-compliance with regulations or failure of controls pertaining to ICOFR. The impact score will be determined at cluster level
+Impact is measured on the basis of the following criteria:
+Criteria
+Significantly High (25)
+Very High (20)
+High (15)
+Medium (10)
+Low (5)
+Impact on business
+Complete closure of Branch/ Business
+
+Closure of Branch/ Assessment Unit for long period (>1 year)
+Closure of Branch/ Assessment Unit for moderate period (> 6 months and <= 1 year)
+Closure of Branch/ Assessment unit for little period (> 3 months and <= 6 months)
+No closure of branch / Assessment unit
+Impact from media coverage (reputational loss – reputational risk rating)
+
+NA
+
+
+Very High
+
+High
+
+Moderate
+
+Low
+Impact of financial penalties against Bank
+Penalty levied to AU - 25
+No Penalty to AU - 5
+G/L impact (financial reporting impact)
+
+Significantly High
+
+
+High
+
+
+Medium
+
+
+NA
+
+
+NA
+
+For each compliance/ risk theme, the SAS GCM system will automatically assign the rating against each of the parameter. In case of non-availability of data, the compliance officer will assign the ratings. Overall Impact score will be determined at cluster level by considering the highest of the scores assigned to the four parameters.
+Inherent risk calculation at AU level
+To arrive at the inherent risk score for an AU, the rating score for likelihood and impact will be multiplied.
+Inherent risk score= Likelihood * Impact
+The SAS GCM system will assign the inherent risk rating based on the score as per following matrix
+Score
+Rating
+>=375
+Extremely High
+>=200
+Very High
+>=100
+High
+>=25
+Minor
+<25
+Insignificant
+
+
+4.2.3 Materiality Assessment for ICOFR
+
+As per International Financial Reporting Standards (IFRS),” Information is material if omitting, misstating or obscuring it could reasonably be expected to influence the decisions that the primary users of general purpose financial statements make on the basis of those financial statements, which provide financial information about a specific reporting entity.”. As per the Public Company Accounting Oversight Board (PCAOB) Auditing Standard, “The risk of material misstatement refers to the risk that the financial statements are materially misstated. Auditing Standard No. 12, Identifying and Assessing Risks of Material Misstatement, indicates that the auditor should assess the risks of material misstatement at two levels: (1) at the financial statement level and (2) at the assertion level.”. Materiality analysis refers to the identification and prioritization of issues which will have a significant impact on the business of the Bank and its stakeholders. It provides for an opportunity to review the existing products, processes and business groups, along with corresponding risks and improve the underlying business strategy. 
+
+Below will be the key steps to perform materiality assessment:
+
+	•	Determining the materiality level and tolerable error
+	•	Identifying of significant accounts based on quantitative and qualitative factors
+	•	Mapping significant accounts to products, business groups, processes
+
+In order to determine significant accounts, materiality should be defined at two levels:
+	•	At the overall financial statements level (as it relates to the consolidated financial statements taken as a whole)
+	•	The individual account level (pertaining to a group of accounts or segments of business or captions for subsidiaries/ groups/ entities of the Bank)
+Overall materiality involves the risk of material misstatement of the consolidated financial statements. Overall materiality is used to assess the aggregated misstatements. The parameters which will be used to calculate the overall materiality is mentioned in ““Determination of materiality level and tolerable error” section.
+Determination of materiality level and tolerable error
+For the purpose of review of internal control over financial reporting (ICOFR) and compliance, the materiality level will be defined as 5% of profit before tax (PBT) of the “standalone” Bank for revenue items and 0.5% of total assets of the standalone bank. A further haircut of 25% is to be considered thereon for arriving at the overall materiality limit.
+Tolerable error will be defined as per bank’s internal tolerable threshold.
+Identification of significant accounts
+The key inputs to identification of significant accounts will be as under:
+	•	Chart of accounts
+	•	Trial balance
+	•	Zero balance ledger accounts 
+	•	List of significant locations/ branches
+	•	Adjustment entries
+	•	Notes to accounts
+For identifying significant accounts, the following quantitative analysis will be performed:
+	•	Review trial balance covering:
+	•	G/L (Level 1)
+	•	Head (Level 2)
+	•	Account (Level 3)
+	•	Based on materiality threshold and tolerable error level, significant accounts will be identified at “Account” level
+	•	Further, for accounts not identified as significant, aggregation will be done at “Head” level and thresholds will be applied to identify additional significant accounts, if any.
+Further, non-significant accounts based on quantitative analysis and zero balance accounts will further be reviewed to for qualitative factors such as:
+	•	Purpose of the account
+	•	Nature of entries
+	•	Volume and complexity of transactions
+	•	Susceptibility to fraud
+Mapping of significant accounts 
+The significant accounts will be mapped to products, business groups and processes.
+
+
+
+
+
+
+
+	•	Control environment assessment
+On completion of inherent risk assessment, the next step is determining the existence and effectiveness of internal controls that mitigate the inherent compliance and financial reporting risk.
+This assessment will involve:
+	•	Control quality assessment, wherein an assessment of the design and operating effectiveness of controls established in the Assessment Unit is performed
+	•	Control performance assessment, wherein an assessment of the operating effectiveness of processes is performed.
+
+Control Quality Assessment
+The control quality assessment is an assessment of the 
+	•	Control design effectiveness 
+	•	Control operating effectiveness
+
+The outcome of this assessment is a Control Quality Index (CQI), which represents the health of the Assessment Unit with regards to the quality of processes and controls designed to mitigate compliance and financial reporting risk across the Assessment Unit. 
+Control design effectiveness 
+During this assessment, the controls in place to address the risks are evaluated basis the RCM to assess whether the actual controls, if operated as designed, can effectively mitigate risk to an acceptable level. 
+Based on design of the control that has been rated during recording of controls, the control design effectiveness will be auto calculated by the SAS GCM system based on the following control attributes:
+Monitoring mechanism (Maker checker review)
+Rating
+Score
+Parameter
+Highly effective
+5
+Where there is automated maker checker control (MRC+IT) 
+Highly effective
+5
+Where there is HLC control (HLC) and fully automated control (NA+IT)
+Meets Requirement
+3
+Where there is manual maker checker control (MRC + Manual/IT Based Manual)
+Meets Requirement
+3
+Where control is IT based manual but no maker checker (NA+IT Based Manual
+Significant Improvement Needed
+1
+There is manual control and no maker checker (NA + Manual)
+
+Initial assessment of each control will be required, and the assessment unit will accordingly update the tagging in the system.
+
+
+
+Manual / IT driven/ IT based manual
+
+Rating
+Score
+Parameter
+Highly effective
+5
+Where the control is completely IT driven
+Meets Requirement
+3
+Control is IT based manual
+Significant Improvement Needed
+1
+Control is completely manual
+
+Initial assessment of each control will be required, and the assessment unit will accordingly update the tagging in the system.
+
+Preventive / Detective
+Rating
+Score
+Parameter
+Highly effective
+5
+Where the control is preventive
+Meets Requirement
+3
+Where the control is a detective control and is exercised at the frequency of the activity
+Significant Improvement Needed
+1
+Where the control is a detective control and is exercised at a frequency lower than the frequency of the activity
+
+Initial assessment of each control will be required, and the assessment unit will accordingly update the tagging in the system.
+Training + Documentation
+Rating
+Score
+Parameter
+Highly effective
+5
+Well-documented policy/ process 
+Significant Improvement Needed
+1
+No documentation 
+
+Calculation and interpretation of Control Quality Assessment (CQA) score
+CQA score will be calculated for each control by multiplying the scores arrived during assessment of each parameter
+CQA score = Design effectiveness controls = design parameter 1 * design parameter 2 * design parameter 3 * design parameter 4
+The CQA score is arrived at post scaling down of the CQA. The scaling down logics are as follows
+CQA
+Interpretation of Scaled down CQA
+<9
+5
+>=9 and <81
+10
+>=81 and <225
+15
+>=225 and <500
+20
+>=500
+25
+
+
+Post scaling down, the CQA will be interpreted as below
+Control Quality Category
+Scaled down Control Quality Score
+Significant Improvement Needed
+5
+Improvement Needed
+10
+Meets Requirement
+15
+Effective Control
+20
+Significantly Effective Control
+25
+
+Calculation of Weighted Average Control Quality Assessment (CQA) score
+The number of controls under each Control Quality Category arrived during interpretation of CQA score will be multiplied with applied weights as below to arrive at weighted average CQA.
+Control Quality Category
+Criteria for Control Quality Score
+Weights for Control Quality Category
+No Control
+Obligations without control
+100%
+Significant Improvement Needed
+<15
+80%
+Improvement Needed
+>=15 & <30
+60%
+Meets Requirements
+>=30 & <60
+40%
+Effective Control
+>=60 & <125
+30%
+Significantly Effective Control
+=125
+20%
+
+The weighted average CQA arrived will be added to arrive at Control Quality Index (CQI)
+CQI Score = 100% - weighted average CQA
+The interpretation of CQI will be as below:
+Interpretation of Control Quality Assessment
+Index
+Score
+Significant Improvement Needed
+<40%
+1
+Improvement Needed
+>=40%
+4
+Partially Effective
+>=60%
+9
+Meets Requirements
+>=70%
+16
+Effective
+>=80%
+25
+
+Calculation and interpretation of Control Performance Assessment (CPA)
+The control performance assessment is an accumulation of the compliance monitoring results and control testing results and is measured by a Control Performance Index (‘CPI’). The SAS GCM system will calculate the Control Performance Index based on the compliance monitoring results and control testing results, by using the formula as mentioned in the subsequent points
+CPA = KCI monitoring results & First Line Self-Assessment * Control testing score
+Compliance monitoring of each assessment unit is done on the basis of Key Compliance Indicators (‘KCI’). The KCI will be defined by the Compliance monitoring team and approved by the CG advisory team. 
+KCI & First Line Self-Assessment
+KCI monitoring and Self-assessment to be merged as single parameter. Below mentioned matrix to be considered:
+
+	•	Compliance
+
+Scenarios
+KCI Linked
+KCI
+Self-Assessment
+Score
+Sc - 1
+Yes
+Pass
+Pass
+5
+Sc - 2
+Yes
+Fail
+Pass
+1
+Sc - 3
+Yes
+Pass
+Fail
+1
+Sc - 4
+No
+NA
+Pass
+3
+Sc - 5
+No
+NA
+Fail
+1
+
+	•	ICOFR
+
+Scenarios
+KCI Linked
+KCI
+Self-Assessment
+Score
+Sc - 1
+Yes
+Pass
+Pass
+5
+Sc - 2
+Yes
+Pass
+Pass with Exception
+3
+Sc - 3
+Yes
+Pass
+Fail
+1
+Sc - 4
+Yes
+Fail
+Pass/Pass with Exception /Fail
+1
+Sc - 5
+No
+NA
+Pass/Pass with Exception
+3
+Sc - 6
+No
+NA
+Fail
+1
+
+	•	Converged
+
+Scenarios
+KCI Linked
+KCI
+Self-Assessment
+Score
+Sc - 1
+Yes
+Pass
+Pass
+5
+Sc - 2
+Yes
+Pass
+Pass with Exception
+3
+Sc - 3
+Yes
+Pass
+Fail
+1
+Sc - 4
+Yes
+Fail
+Pass/Pass with Exception /Fail
+1
+Sc - 5
+No
+NA
+Pass/Pass with Exception
+3
+Sc - 6
+No
+NA
+Fail
+1
+
+Control Testing Results
+Compliance testing results are arrived at based on control testing conducted by either Internal Audit Department (‘IAD’) or Concurrent Auditors or Theme based reviews performed by the Compliance department or reviews conducted by the ICOFR team. This will also include any instances/issues identified by the regulator.
+1. Based on various control testing results, each control will be given a control testing score.
+Control Testing Category
+Score
+Pass
+5
+Pass with Exception
+3
+Fail
+1
+Not Tested
+5
+
+Approach taken for UAT – 
+	•	Due to non-availability of Compliance and IAD breaches at control level, following approach is taken for Control Testing - UAT. For e.g. If Card Product is having 14 breaches, then score of 1 will be considered against 14 Random controls and score of 5 for all the balance controls.
+
+	•	Approach for selecting 14 random controls – Basis the score of scaled down CQA, 14 breaches will be equally divided between CQA. After dividing breaches equally across each of CQA category, remaining breaches will be allotted in ascending order 
+
+	•	For e.g., 14 breaches will be first divided equally in 5 CQA categories i.e., 2-2 for each CQA category. For remaining 4 breaches, it will be first allotted to CQA category of 5, then 10, then 15, then 20.
+
+Interpretation of scaled down Control Performance Assessment (CPA)
+The CPA score is arrived at post scaling down of the CPA. The scaling down logics are as follows
+CPA
+Interpretation of Scaled down CPA
+1
+5
+3
+5
+5
+5
+9
+10
+15
+15
+25
+25
+
+Post scaling down, the CPA will be interpreted as below
+Control Performance Category
+Scaled down Control Performance Score
+Significant Improvement Needed
+5
+Improvement Needed
+10
+Meets Requirement
+15
+Effective Control
+20
+Significantly Effective Control
+25
+
+Calculation of Weighted Average Control Performance Assessment (CPA) score
+The number of controls under each Control Performance Category arrived during interpretation of CPA score will be multiplied with applied weights as below to arrive at weighted average CPA.
+Control Quality Category
+Criteria for Control Quality Score
+Weights for Control Quality Category
+No Control
+Obligations without control
+100%
+Significant Improvement Needed
+>=5 & <45
+80%
+Improvement Needed
+>=45 & <225
+60%
+Meets Requirements
+>=225 & <250
+40%
+Effective Control
+>=250 & <375
+30%
+Significantly Effective Control
+>=250 & <375
+20%
+
+The products arrived will be added to arrive at Control Performance Index (CPI)
+CPI score = 100% - weighted average control performance score
+The interpretation of CPI are as follows
+Interpretation of Control Performance Assessment
+Index
+Score
+Significant Improvement Needed
+<40%
+1
+Improvement Needed
+>=40%
+4
+Partially Effective
+>=60%
+9
+Meets Requirements
+>=70%
+16
+Effective
+>=80%
+25
+Control Environment Rating (CER)
+Control environment rating is arrived based on the following results:
+1.	Control Quality Index 
+2.	Control Performance Index
+The SaaS EGRC system will aggregate the results of Control Quality Assessment and Control Performance Assessment to arrive at the Control Environment rating for each cluster (Control environment rating = Control Quality Index * Control Performance Index)
+The ratings shall be interpreted as per the below table. A mandatory justification for this rating shall be provided.
+Rating
+Score
+Significant Improvement Needed
+<15
+Improvement Needed
+<30
+Partially Effective
+<60
+Meets Requirement
+<125
+Effective
+>=125
+
+The outcome of this assessment will be available in the form of a system report.
+
+	•	Residual risk at AU level
+Residual risk is defined as ‘risk remaining after considering the controls put in place to mitigate the inherent risk’. It indicates the effectiveness of controls in mitigating the inherent risk i.e. for an assessment unit, if the controls put in place to mitigate the inherent risk are designed and operating effectively, its residual risk would be lower. Further, data for each of the parameter will be taken with one quarter lag i.e., for March’22 Residual Risk assessment all the data will be considered from Apr’21 to Dec’21.
+
+Rating override
+
+The ratings described till now are arrived on the basis of a model, however, there may be some factors based on which the Compliance Officer/ ICOFR Officer may want to increase or decrease on account of their expert judgement, ground realities or recent regulatory activity on a particular topic. 
+The rating may be modified based on certain ‘overriding factors’ described below. However, the reason for the override shall be recorded by GCCO/ICOFR officer and approved by the Head of Compliance and ICOFR Monitoring. 
+Causes that can initiate the rating override:
+Warning to other players in the industry/competitors: Regulators may warn the industry or the competitors in the industry, on the practices followed by the banks. This could raise the risk level for the Bank and hence, reconsideration of the residual risk rating may be required
+Litigation: Significant lawsuit against a Business Group (or similar business at another bank in the same market) during the year may raise a concern and hence one may want to override the risk rating and alter the monitoring plan.
+Any other factors: The above-mentioned factors are indicative in nature. There could be several other factors that an experienced assessor may consider overriding the residual risk rating.
+
+Residual risk calculation
+
+	•	The SAS GCM system will calculate the residual risk by dividing the inherent risk score by the control environment score for an Assessment Unit
+	•	The following matrix provides the mapping of residual risk assessment rating to residual risk assessment score
+
+Rating
+Score (New)
+No control
+NA
+Significant Improvement Needed
+>=6.67
+Improvement Needed
+<6.67
+Meets Requirement
+<=2
+Well Controlled
+<=1
+	•	The aggregation of residual risk at AU/ theme level shall happen using the following weights
+
+Aggregating residual risk
+Weights
+No control
+100%
+Significant Improvement Needed
+80%
+Improvement Needed
+60%
+Meets Requirement
+25%
+Well Controlled
+1%
+Process of aggregation – The residual risk determined at individual control level are categorized into Well Controlled, Meets Requirement, Improvement Needed, Significant Improvement Needed and No control. Next, count of controls under each category is identified and the count is multiplied with the weights of each category. The AU level residual risk is arrived by taking the sum of the products and dividing the same by the no. of controls.
+	•	The interpretation of aggregate residual risk shall be as per the following table
+
+Interpreting residual risk
+Aggregate residual risk score
+Extremely High
+>=70%
+High
+>=45%
+Medium
+>5%
+Low
+>1%
+Negligible
+<=1%
+
+	•	The outcome of this assessment will be available in the form of a system report.
+	•	The Compliance Officer/ ICOFR Officer of an AU will generate the system report for residual risk computation, review the outcome and send it to AU Head for validation (1st level validation) through an email alert
+	•	Post-validation by the AU Head, there should be an email alert to the Compliance Officer/ ICOFR Officer for 2nd level validation.
+	•	The SAS GCM system will provide for rating override facility for the Compliance Officer/ ICOFR Officer of Central Compliance team.
+	•	The Compliance officer overriding the rating shall record the reason for doing so.
+	•	Head of Compliance and ICOFR Monitoring officer shall agree and authorise the rating override.
+
+Annexure I – Detailed list of Assessment Units
+Sr. No.
+Name of Assessment Unit
+1
+Trade Finance Operations Group
+2
+Transaction Banking Group
+3
+International Banking Group
+4
+International Financial Institutions Group
+5
+NRI Remittances
+6
+Remittance and International Operations Group
+7
+IFSC Banking Unit (IBU)
+8
+Phone Banking Operations
+9
+Central Reconciliation and Operations Group
+10
+ATM Operations Group
+11
+Retail Assets Operations Group
+12
+Payment Operations Group
+13
+NRI Retail Product Group
+14
+Rural and Inclusive Banking Group (Assets)
+15
+Personal Loan and education loan and - Product
+16
+Consumer finance and Payment solutions - Product
+17
+Auto Loan and Commercial Business
+18
+Mortgage
+19
+Dealer Funding 
+20
+LAS
+21
+Retail Structured Finance
+22
+Construction funding
+23
+Branch Banking and Branch Process
+24
+Debt Service Management Group (Part of Retail)
+25
+Liabilities Operations Group
+26
+Card Operations
+27
+Cards - Product
+28
+SES - Current Account - Product
+29
+SES - BLG - Product
+30
+SES - CMS - Product
+31
+SES - ETRG - Product
+32
+Private Banking 
+33
+Wealth Banking
+34
+Fixed Deposits
+35
+Third party products
+36
+Savings Account - Product
+37
+Marketing and Alliances
+38
+Lending Services Operations Group
+39
+Corporate Assets Operations Group
+40
+Asset Evaluation and Monetization Group
+41
+Credit and Policy - MCG, BLG and SMEG
+42
+Credit Monitoring Group
+43
+Credit Risk Management Group
+44
+Credit and Policy Group
+45
+Domestic Syndication Group
+46
+Large Clients Group
+47
+Mid Corporate Group
+48
+Portfolio Management Group
+49
+Small and Medium Enterprises Group (SMEG)
+50
+Structured Finance Group - Corporate
+51
+Institutional Business Group (TASC - Trust related accounts and GBG)
+52
+Global Client Group
+53
+Services Sector Group
+54
+Strategic Solutions Group
+55
+Treasury Control and Services and SMS group
+56
+Capital Market Group
+57
+Custody Business Group
+58
+Financial Sponsor and Credit Bonds Desk Group
+59
+Market Risk Management Group
+60
+Markets Group (MG)
+61
+Proprietary Trading Group (PTG)
+62
+Secretarial Group
+63
+Financial Institutions Group
+64
+Startup Engagements and Investments
+65
+Financial Accounting and Reporting Group
+66
+Payments Fixed Assets
+67
+Asset Liability Management Group
+68
+Planning and Expense Management - RPDG
+69
+PIVG - Strategy Group
+70
+PIVG - Systems
+71
+PIVG - Planning
+72
+PIVG - ILAG
+73
+PIVG - Taxation
+74
+Regulatory Reporting Group
+75
+Compliance Group
+76
+Internal Audit Group
+77
+Basel Risk Analytics Group
+78
+Operational Risk Management Group and Business Continuity Management Group (ORMG & BCMG)
+79
+Business Technology Group
+80
+Corporate Brand and Communications Group
+81
+Corporate Legal Group
+82
+Customer Service Quality Group
+83
+Data Science and Analytics Group
+84
+Digital Channels and Partnership
+85
+Human Resource Management Group
+86
+Information Security Group
+87
+Infrastructure Management & Services Group
+88
+Financial Crime Prevention and Reputation Management Group
+89
+Whistle Blower 
+
+Annexure II – List of regulatory themes
+Theme 
+Operating Regulation 
+Prudential Norms
+Regulatory Reporting and Disclosures
+Financial Accounting Records
+Corporate Governance
+Cross Border Risk
+KYC/AML 
+Employer Communications
+Conflict of Interest
+Outsourcing 
+Business Continuity 
+Cyber
+SWIFT communication
+Capital Adequacy 
+Compliance Function effectiveness
+NPA management 
+Information Security and Data Privacy
+Data Governance
+Statutory Compliance 
+Liquidity Management
+Fraud Management 
+
+
+
+
+
+
+
+
+
+
+Annexure III – Details Parameter 
+	•	Likelihood Assessment
+
+Parameters
+Data source
+Frequency
+Business/ transaction volumes
+Business 
+Annual
+Complexity or changes in products and systems (new product/ system roll-out)
+CG Advisory team & BTG
+Annual
+No. of regulatory returns (Critical/ non-critical returns/ feeder units to regulatory returns)
+RBI Inspection Team (As reported in Audit Committee)
+Annual
+Number of compliance breaches observed (Self-identified and Control Testing)
+	•	IAD Team
+	•	RBI Inspection Team
+	•	Compliance monitoring team
+	•	CG Advisory (From Deviation certificate)
+Annual
+Number of ICOFR control failures (having financial Impact)
+ICOFR team
+Annual
+No. of Customer complaints
+CSQG Team (As reported in customer service council)
+Annual
+
+	•	Increase in business/ transaction volumes – For each Assessment unit, we have defined the definition (as per below mentioned annexure IV) for volume and basis which increase in volume percentage will be calculated and likelihood score will be given as per the defined matrix
+
+	•	Complexity or changes in products and systems – 
+
+	•	System complexity – List of all system will be received from BTG will be mapped to the applicable AU’s basis the system owner and scoring across 3 parameters (No. of interfaces, critical system - tier categorization and no. of change request) will be done basis below matrix and weighted average will be rounded off to next multiple of 5. Further in case of multiple systems mapped to a single AU, a simple average of Final score will be considered and scaling up/down will be done as per Scaling matrix. Weighted average will be inputted in system and scoring will be done basis defined matrix. 
+
+System Parameter-Logic
+5
+10
+15
+20
+25
+No. of interfaces
+0 to 3
+4 to 9
+10 to 15
+16 to 24
+>25
+Critical system (Tier categorization)
+Tier 3
+
+Tier 2
+Tier 1
+Tier 0
+No. of change request
+<=5
+>5 and <=10
+>10 and <=20
+>20 and <=30
+>30
+
+	•	Product Complexity
+Product complexity will be categorized by Compliance Group on the basis of parameters such as ease of understanding of product/process by customer, product variants, number of applicable regulatory guidelines, complexity of guidelines and supervisory focus. All the parameters are bucketed in scores of 1, 3 and 9 and the same are multiplied to arrive at a product for which Thresholds are defined categorizing them into high medium and low.  Weighted average will be inputted in system and scoring will be done basis defined matrix. Below are the thresholds defined basis the type of Assessment Unit – 
+
+	•	For Business Groups – 
+Low
+243 and lower
+Medium
+244-2187
+High 
+>2188
+	•	For Operations and Support Groups – 
+Low
+81 and lower
+Medium
+82- 729
+High
+>729
+
+Note- (Support and Operations Group are not scored for Product Variant)
+
+	•	Number of regulatory returns – Each Regulatory Return submitted by Bank will be mapped against the Assessment unit basis the data reported to Audit Committee and basis the count of returns for respective AU’s, score will be calculated
+
+	•	Number of compliance breaches reported in the previous 12 months – Score will be calculated basis the regulatory failures noted under Self-assessment and Control Testing (IAD, Compliance reviews & RBI inspection failures) and scoring will be done as per defined matrix
+
+	•	Number of ICOFR control failures in previous 12 months - Score will be calculated basis the ICOFR failures noted under Self-assessment & ICOFR team having financial impact 
+
+	•	No. of Customer Complaints – Customer Complaint Data Dump is extracted from FCRM system with the help of Customer Service Quality Group (CSQG). Post discussion with CSQG, the customer complaints were mapped to specific team’s basis complaint- product mapping and basis keyword cluster specific to the relevant assessment units the complaints were mapped to Assessment Unit. Further, allied Assessment units will also be considered as same number of customer complaints. For e.g., Complaints count of Card Product will be tagged to Card Operations.
+
+	•	Impact Assessment 
+Parameters
+Data source
+Frequency
+Impact on business
+Compliance Group
+Annual
+Impact from media coverage (Basis media coverage tonality ratio)
+FCPRMG
+Annual
+Impact of financial penalties against Bank
+Compliance Group
+Annual
+G/L impact (financial reporting impact)
+FARG Team
+Annual
+
+	•	Impact on business – Due to non-compliance of any regulatory obligation if any impact on business, product or assessment unit then the score will be accordingly given
+
+	•	Impact from media coverage (Basis media coverage tonality ratio) - The media mentions tonality rating is computed for the Bank on quarterly basis. The same will be considered for scoring this parameter and will be uniform for all AUs. Highest of 4 quarter rating data will be considered for assessment
+
+	•	Impact of financial penalties against Bank – In case of any financial penalties are levied on any product or business group or assessment unit then score of maximum 25 will be given
+
+	•	G/L impact (financial reporting impact) – ICOFR team will calculate the GL impact basis the inputs from the FARG on the material impact on the Profit & Loss and Balance Sheet of the bank.
+
+	•	Control Quality Assessment (CQA)
+
+For review of CQA parameters, documented RCM are considered
+
+	•	Monitoring mechanism (Maker checker review) – 
+
+HLC – High level controls means where any group head or business head is involved/reviews are part of the control which is performed
+MRC – Maker checker control is exercised by the assessment unit
+
+Wherever the control is 
+
+	•	Manual / IT driven/ IT based manual – 
+
+IT Driven – where control exercised is fully automated 
+IT Based manual – where control exercised is partly manual and partly automated
+Manual - where control exercised is fully manual
+
+Wherever the control is
+
+	•	control is completely IT driven same will be tagged as Highly effective and score will be given as per defined matrix
+	•	IT based manual then same will be tagged as Meets Requirement and score will be given as per defined matrix
+	•	completely manual then same will be tagged as Significant Improvement Needed and score will be given as per defined matrix
+
+	•	Preventive / Detective - Wherever the control is
+
+	•	Preventive then same will be tagged as Highly effective and score will be given as per defined matrix
+	•	a detective control and is exercised at the frequency of the activity same will be tagged as Meets Requirement and score will be given as per defined matrix
+	•	detective control and is exercised at a frequency lower than the frequency of the activity then same will be tagged as Significant Improvement Needed and score will be given as per defined matrix
+
+	•	Documentation - Wherever the control is
+
+	•	Well-documented policy/ process then same will be tagged as Highly effective and score will be given as per defined matrix
+	•	No documentation of control in SOP/PAC notes then same will be tagged as Significant Improvement Needed and score will be given as per defined matrix
+
+	•	Control Performance Assessment 
+
+	•	KCI & First Line Self-Assessment – Self assessment score will be taken as per the self-testing performed by the respective assessment unit and the KCI output (if any) against the risk and controls. Score will be given as per defined matrix
+
+	•	Control Testing Results – Failures noted under Internal Audit Department (‘IAD’), or any non-compliances identified by the RBI or Compliance observations, or observations identified by ICOFR team having financial impact will be mapped to the exact risk and controls in RCM. Score will be given as per defined matrix.
+
+
+Annexure – IV – Volume Definitions
+
+Assessment Unit
+Volume Definition 
+Phone Banking Operations
+No. of transactions processed by phone banking team
+ATM Operations Group
+No. of ATM transactions 
+International Financial Institutions Group
+Value of transactions processed in INR under different products
+NRI Remittances Product
+No. of inward and outward remittances processed in INR for NRI 
+Central Reconciliation and Operations Group
+No of reconciliation MIS published by CRT 
+IFSC Banking Unit (IBU)
+No. of transactions processed by IBU
+Transaction Banking Group
+No. of transactions processed by transaction banking group
+Trade Finance Operations Group
+No. of transactions across all trade products 
+Remittance and International Operations Group
+i. No. of inward and outward remittances processed in INR ii. No of transactions processed by operations across all products and branches
+International Banking Group
+No. of transactions processed by branches across all products by IBG
+Dealer Funding 
+No. of cases sanctioned against dealer funding
+LAS
+No. of cases sanctioned against Loan against securities
+Personal Loan and education loan - Product
+No. of cases sanctioned for personal loan & education loan
+Auto Loan and Commercial Business
+No. of cases sanctioned against AL & CB
+Construction funding
+No. of cases sanctioned against Construction Funding
+Debt Service Management Group (Part of Retail)
+No. of recoveries done in last year against  i) Movable asset ii) Immovable asset  iii) Unsecured loans
+Mortgage
+No. of cases sanctioned against mortgage
+Retail Structured Finance
+No. of Loans  i) buy-out under asset securitization ii) sell-down under asset securitization
+NRI Retail Product Group
+No. of NRI accounts opened
+Rural and Inclusive Banking Group (Assets)
+No. of SHG loans sanctioned No. of CBF loans sanctioned No. of Rural Banking credit sanctioned No. of Jewel Loans sanctioned No. of Loans sanctioned via Business correspondent No. of loans sanctioned under GSS No. of loans Farm equipment loans sanctioned
+Consumer finance and Payment solutions - Product
+i) No. of cases sanctioned against consumer finance ii) No. of physical prepaid cards issued 
+Payment Operations Group
+No. of transactions processed under CMS & Domestic Investment operations
+Retail Assets Operations Group
+1. No. of LSM across all retail products 2. No. of accounting entries passed across all retail products 3. No. of lien marked across all retail products 4. No. of Auto debits across all products 5. No. of SRs processed across all products  
+Branch Banking and Branch Process
+No. of transactions processed by PAN India branches
+Card Operations
+No. of transactions processed by cards operations 
+Fixed Deposits
+No. of FDs booked/ created 
+SES - Current Account - Product
+No. of SES current bank accounts opened
+Savings Account - Product
+No. of savings bank accounts opened
+Cards - Product
+i) No. of credit card, debit card & prepaid cards, ETC issued  ii) No. of reward points/cashback disbursed
+SES - BLG - Product
+No. of cases sanctioned against to BLG
+Private Banking 
+No. of private banking accounts opened during year
+Wealth Banking
+No. of wealth banking accounts opened during year
+Third party products
+No. of new customer availing third party products
+SES - ETRG - Product
+No. of new customer onboarded under ETRG
+Marketing and Alliances
+Number of email and notification campaigns and number of alliances done 
+Liabilities Operations Group
+No. of service request processed
+SES - CMS - Product
+No. of transactions (all CMS product) processed during the year
+Asset Evaluation and Monetization Group
+i) No. of properties acquired ii) No. of properties monetized
+Credit Monitoring Group
+No. of loans sanctioned (only renewals) for all corporate loan business groups
+Lending Services Operations Group
+No. of loans sanctioned (Fresh, enhancement, renewals, disbursement & closure) for all corporate loan business groups
+Domestic Syndication Group
+No. of syndicated loans sanctioned
+Small and Medium Enterprises Group(SMEG)
+No. and value of loans sanctioned across SMEAG
+Large Clients Group
+No. and value of loans sanctioned across LCG
+Mid Corporate Group
+No. and value of loans sanctioned across MCG
+Global Client Group
+No. and value of loans sanctioned across GCG
+Credit Risk Management Group
+i) No of Risk Rationales released ii) No. of fresh cases approved by CRMG iii) No. of policies/programme vetted by CRMG
+Strategic Solutions Group
+No. of loans restructured, and new facility sanctioned to new customers
+Institutional Business Group (TASC and GBG)
+No. of transaction executed under TASC & GBG No. of accounts opened
+Credit and Policy - MCG, BLG and SMEG
+No of policies formulated/ No of Proposals wherein Credit underwriting done for corporate 
+Credit and Policy Group
+No of policies formulated/ No of Proposals wherein Credit underwriting done for retail group
+Structured Finance Group - Corporate
+No of transactions facilitated to other business groups
+Corporate Assets Operations Group
+1. No. of LSM across all retail products 2. No. of accounting entries passed across all retail products 3. No. of lien marked across all retail products 4. No. of SRs processed across all products
+Services Sector Group
+No. and value of loans sanctioned across SRSG
+Portfolio Management Group
+NA
+Financial Sponsor and Credit Bonds Desk Group
+1.No of trades in credit bond desk
+Startup Engagements and Investments
+1. No of buy transactions. 2. No of sell transactions
+Secretarial Group
+No. of various meetings held
+Capital Market Group
+No. of loans sanctioned
+Market Risk Management Group
+Number of transactions for all fixed income products, Money market Products, Forex Products and Derivatives products, Non SLR products
+PIVG - Strategy Group
+No of regulatory submission
+PIVG - Systems
+To be discussed with Bank - These would be NA for this AU
+PIVG - Planning
+To be discussed with Bank - These would be NA for this AU
+Custody Business Group
+No. of trades reported to CCIL's during the year
+Regulatory Reporting Group
+No of regulatory report submission
+Treasury Control and Services and SMS group
+Number of transactions for all fixed income products, Money market Products, Forex Products and Derivatives products, MTM statement, Non SLR products
+Markets Group (MG)
+Number of transaction for all products mentioned below 1.Bullion Dubai Process 2.Debt segment 3.ETF 4.Exchange Traded Currency Options 5.Commodity hedging 6.Credit default swaps 7.Non Govt deb securities 8.Dealing in securities issued by central and state govt 9.Derivatives (Sales and Interbank) 10.Exchange Traded Currency Futures & Options Liquidity seeking 11.Forex (Sales and Interbank) 12.Bullion Process 13.When issued 14.Short Sale in Govt of India securities 15.Pref share 16.Forward transactions with client 17.Variation Margin
+Proprietary Trading Group (PTG)
+Number of transaction for all products mentioned below 1.Cash Settled Interest Rate Futures 2.Dealing in When Issued Securities 3.Debt Segment 4.Exchange Traded Currency Futures & Options Liquidity seeking 5.Credit default swaps 6.Non Govt debt securities - CB, CP and CD 7.Dealing in securities issued by central and state govt 8.Derivatives 9.Equity Trading 10.Forex 11.Dealing in warrants 12.Short Sale
+Financial Institutions Group
+Number of transactions for all products mentioned below 1.Bill Rediscounting 2.Issuance and redemption of Certificate of Deposits 3.Loan Borrowings in Indian Rupees from Domestic Banks and Financial Institutions 4.Priority Sector Lending Certificate 5.PROCESS FOR MONITORING OF LIMITS ON DOMESTIC BANKS AND FINANCIAL INSTITUTIONS 6.SFCMG FIG IBPC 7.SFCMG FIG Refinance
+Financial Accounting and Reporting Group
+To be discussed with Bank - These would be NA for this AU
+Payments Fixed Assets
+1.Number of Vendor payments 2.Number of new assets purchased
+Asset Liability Management Group
+1 All product daily transactions and MTM 
+Planning and Expense Management - RPDG
+To be discussed with Bank - These would be NA for this AU
+PIVG - ILAG
+No. of NPA/NPI accounts
+PIVG - Taxation
+No of instances for tax payment
+Customer Service Quality Group
+No. of complaints resolved by the Bank
+Financial Crime Prevention and Reputation Management Group
+No of Frauds reported in CFR
+Compliance Group
+i) No of proposals approved/guidelines disseminated/representations made to RBI ii) No. of service requests closed with respect to CG advisory iii) No. of inspections conducted
+Internal Audit Group
+No of AUs audited
+Basel Risk Analytics Group
+To be discussed with Bank - These would be NA for this AU
+Corporate Brand and Communications Group
+Under Internal Discussion
+Corporate Legal Group
+No. of legal cases handled during the year
+Human Resource Management Group
+No. of batch transaction processed for pay-out (payroll processing, F&F settlement, reimbursements)
+Operational Risk Management Group and Business Continuity Management Group (ORMG & BCMG)
+No. of operational loss events/Instances No. of BCP failure instances
+Business Technology Group
+1. No. of service requests processed for user access creation, modification and deactivation at application, DB and OS 2. No. of changes (enhancements) implemented during the year 3. No. of bug fixes during the year 4. No. of Incidents raised and resolved during the year 5. New applications developed during the year
+Data Science and Analytics Group
+1. No. of MIS's generated/sent during the year. 2. No. of SRs processed for campaign management. 3. No. of SRs processed by the systems team within DSAG. 4. No. of SRs processed for Ad-hoc requests.
+Information Security Group
+No. of Information security events, incidents and crisis
+Infrastructure Management & Services Group
+To be discussed with Bank - These would be NA for this AU
+Digital Channels and Partnership
+Under Internal Discussion
+Whistle Blower
+No. of legal cases handled during the year
+

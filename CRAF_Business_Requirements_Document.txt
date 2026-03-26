@@ -1,0 +1,1243 @@
+Converged Risk Assessment Framework  
+Business Requirements Document 
+  Working Prototype Demo for Banking Client Custom Governance Solution Proof-of-Concept   Comprehensive Technical Specification Including: Functional Requirements, Data Models, API Specs, User Stories, and Technical Architecture   Version 1.0 February 2026
+
+Document Control
+Document Title
+CRAF - Business Requirements Document
+Version
+1.0
+Date
+February 16, 2026
+Project Timeline
+3-4 weeks
+Target Audience
+C-Suite/Senior Leadership
+Demo Duration
+15-20 minutes (executive overview)
+Demo Type
+Live demonstration - Working Prototype
+Platform
+Custom solution proof-of-concept
+
+Version History
+Version
+Date
+Author
+Changes
+1.0
+Feb 2026
+Business Analyst
+Initial comprehensive requirements with full technical specifications
+
+Table of Contents
+1. Executive Summary
+   1.1 Project Purpose
+   1.2 Business Problem
+   1.3 Solution Overview
+   1.4 Key Value Propositions
+
+2. Project Overview & Objectives
+   2.1 Project Goals
+   2.2 Success Criteria
+   2.3 Constraints & Assumptions
+
+3. Business Context & Drivers
+   3.1 Regulatory Landscape
+   3.2 Market Context
+   3.3 Client Pain Points
+
+4. Scope & Deliverables
+   4.1 In Scope
+   4.2 Out of Scope
+   4.3 Deliverables
+
+5. Functional Requirements
+   5.1 Inherent Risk Assessment
+   5.2 Control Quality Assessment
+   5.3 Control Performance Assessment
+   5.4 Residual Risk Calculation
+   5.5 Dashboard & Reporting
+   5.6 Early Warning Indicators
+
+6. Dashboard Specifications
+   6.1 Executive Dashboard
+   6.2 Risk Assessment Views
+   6.3 Drill-Down Navigation
+   6.4 Comparison Views
+
+7. Data Model & Entities
+   7.1 Core Entities
+   7.2 Assessment Unit Structure
+   7.3 Sample Data Specifications
+
+8. Database Schema
+   8.1 Table Definitions
+   8.2 Relationships
+   8.3 Indexes & Constraints
+
+9. API Specifications
+   9.1 REST API Endpoints
+   9.2 Request/Response Formats
+   9.3 Authentication
+
+10. User Stories & Use Cases
+    10.1 Audit Finding Remediation
+    10.2 Control Failure Investigation
+    10.3 New Regulation Impact Assessment
+
+11. Technical Architecture
+    11.1 System Architecture
+    11.2 Technology Stack
+    11.3 Component Design
+
+12. Acceptance Criteria
+    12.1 Functional Acceptance
+    12.2 Performance Criteria
+    12.3 Demo Readiness
+
+13. Implementation Roadmap
+    13.1 Week 1: Foundation
+    13.2 Week 2: Core Features
+    13.3 Week 3: Integration & Dashboards
+    13.4 Week 4: Testing & Refinement
+
+14. Future Enhancements
+    14.1 Alerts & Notifications
+    14.2 Workflow Management
+    14.3 Audit Trail
+    14.4 Export Capabilities
+
+Appendix A: Sample Assessment Units
+Appendix B: RBI Regulatory References
+Appendix C: Glossary of Terms
+
+1. Executive Summary
+This Business Requirements Document (BRD) provides comprehensive specifications for developing a Converged Risk Assessment Framework (CRAF) demonstration prototype for a banking client. The prototype showcases a custom governance solution designed to address Reserve Bank of India (RBI) regulatory compliance mandates while delivering significant cost savings compared to traditional Governance, Risk & Compliance (GRC) platforms.
+1.1 Project Purpose
+The primary objective is to win a new client contract by demonstrating a cost-effective, feature-rich governance framework that meets all RBI regulatory requirements. The demo targets C-Suite executives and will be delivered as a 15-20 minute live demonstration showcasing a fully functional working prototype.
+1.2 Business Problem
+Indian banks and Non-Banking Financial Companies (NBFCs) are facing critical challenges:
+RBI has mandated implementation of comprehensive governance frameworks
+Current market solutions (SAP GRC, SAS GCM, RSA Archer) require investments running into crores
+Many financial institutions lack complete or adequate governance frameworks
+Manual compliance and risk assessment processes are time-consuming, error-prone, and resource-intensive
+Increasing regulatory compliance pressure with frequent RBI circulars and guideline updates
+Fragmented view of risk across compliance and financial reporting domains
+1.3 Solution Overview
+The Converged Risk Assessment Framework is a custom-built solution that integrates Compliance Risk and Financial Reporting Risk management into a unified platform. Key capabilities include:
+Automated Inherent Risk Assessment based on parametric scoring (Likelihood × Impact)
+Comprehensive Control Quality Assessment evaluating design effectiveness
+Control Performance Assessment tracking monitoring and testing results
+Automated Residual Risk calculation with drill-down from enterprise to obligation level
+Executive dashboards with real-time and periodic assessment capabilities
+Early warning indicators for proactive risk management
+Coverage of 30+ Assessment Units across all business areas
+Emphasis on RBI regulatory requirements and compliance obligations
+1.4 Key Value Propositions
+Value Driver
+Benefit
+Cost Reduction
+Custom solution at fraction of commercial GRC platform costs (savings in crores)
+RBI Compliance
+Complete coverage of RBI governance and risk management mandates
+Converged Approach
+Single platform for compliance risk and financial reporting risk (ICOFR)
+Automation
+Automated risk calculations reduce manual effort and improve accuracy
+Enterprise Visibility
+Complete risk view from individual obligations to board-level reporting
+Decision Support
+Data-driven insights enable informed executive decision-making
+
+
+Control Design Parameters - Details:
+Monitoring Mechanism: Automated maker-checker (5 pts), Manual maker-checker (3 pts), No maker-checker (1 pt)
+Automation Level: Fully IT-driven (5 pts), IT-based manual (3 pts), Completely manual (1 pt)
+Control Type: Preventive (5 pts), Detective at activity frequency (3 pts), Detective at lower frequency (1 pt)
+Documentation: Well-documented policy/process (5 pts), No documentation (1 pt)
+4.3 Control Performance Assessment
+Overview: Evaluation of control operating effectiveness based on monitoring and testing.
+Req ID
+Requirement
+Priority
+Acceptance Criteria
+FR-CPA-001
+System shall integrate KCI monitoring results
+Must Have
+KCI Pass/Fail status reflected in CPA score
+FR-CPA-002
+System shall integrate self-assessment results
+Must Have
+Pass/Pass with Exception/Fail status captured
+FR-CPA-003
+System shall calculate CPA score from monitoring and testing
+Must Have
+Combined score with scenario-based logic
+FR-CPA-004
+System shall calculate Control Performance Index (CPI)
+Must Have
+CPI = 100% - weighted avg CPA
+FR-CPA-005
+System shall support periodic and real-time assessment modes
+Must Have
+Toggle between assessment views
+4.4 Residual Risk Calculation
+Overview: Final risk rating after considering control environment effectiveness.
+Req ID
+Requirement
+Priority
+Acceptance Criteria
+FR-RR-001
+System shall calculate Control Environment Rating = CQI × CPI
+Must Have
+Automated calculation per AU
+FR-RR-002
+System shall calculate Residual Risk = Inherent Risk ÷ Control Environment Rating
+Must Have
+Formula applied consistently
+FR-RR-003
+System shall assign residual risk ratings based on thresholds
+Must Have
+≥6.67: Sig Improvement, <6.67: Improvement, ≤2: Meets Req, ≤1: Well Controlled
+FR-RR-004
+System shall aggregate residual risk with weighting to Theme/Enterprise level
+Must Have
+Weighted aggregation formula applied
+4.5 Dashboard & Reporting Requirements
+Overview: Executive dashboards and reporting capabilities.
+Req ID
+Requirement
+Priority
+Acceptance Criteria
+FR-DASH-001
+System shall provide Executive Dashboard with enterprise-wide risk heatmap
+Must Have
+Visual heatmap showing all AUs by risk level
+FR-DASH-002
+System shall display Risk Trend Analysis (year-over-year)
+Must Have
+Line charts showing trend across 2+ years
+FR-DASH-003
+System shall show Top Risk Exposures by Business Unit
+Must Have
+Ranked list with risk scores
+FR-DASH-004
+System shall display Regulatory Compliance Status
+Must Have
+Dashboard showing RBI compliance metrics
+FR-DASH-005
+System shall support drill-down navigation: Enterprise → Theme → AU → Obligation
+Must Have
+4-level drill-down operational
+FR-DASH-006
+System shall show before/after control implementation comparison
+Must Have
+Side-by-side comparison view
+FR-DASH-007
+System shall display Overall Residual Risk Score (KPI)
+Must Have
+Prominent display on executive dashboard
+FR-DASH-008
+System shall display Number of High/Critical Risks (KPI)
+Must Have
+Count with drill-down capability
+FR-DASH-009
+System shall display Control Effectiveness Percentage (KPI)
+Must Have
+Calculated from CQI and CPI
+FR-DASH-010
+System shall display Compliance Breach Trends (KPI)
+Must Have
+Trend chart over time
+4.6 Early Warning Indicators
+Overview: Proactive indicators to alert management of emerging risks.
+Req ID
+Requirement
+Priority
+Acceptance Criteria
+FR-EWI-001
+System shall highlight AUs with deteriorating risk trends
+Must Have
+Comparison with previous period, flag >10% increase
+FR-EWI-002
+System shall identify controls approaching failure threshold
+Must Have
+Flag controls with declining performance
+FR-EWI-003
+System shall show AUs with increasing compliance breaches
+Must Have
+Trend analysis on breach frequency
+FR-EWI-004
+System shall display visual indicators (traffic light colors) for risk levels
+Must Have
+Red/Yellow/Green status indicators
+
+5. Dashboard Specifications
+This section describes the visual design and functionality of all dashboard views in the CRAF prototype. The dashboards follow a professional banking theme with blues and grays, clean design, and intuitive navigation.
+5.1 Executive Dashboard
+Purpose: Provide C-Suite executives with at-a-glance view of enterprise-wide risk posture.
+
+Layout & Components:
+Top Section: Key Performance Indicators (KPIs)
+Overall Residual Risk Score - Large metric card, color-coded by risk level
+Number of High/Critical Risks - Prominent count with red indicator if >0
+Control Effectiveness % - Gauge chart showing overall CER performance
+Compliance Breach Trend - Mini sparkline showing 12-month trend
+
+Center Section: Enterprise Risk Heatmap
+Visual grid/matrix showing all 30+ Assessment Units
+Color coding: Red (Extremely High), Orange (Very High), Yellow (High), Light Green (Minor), Green (Insignificant)
+Hover shows AU name, residual risk score, and rating
+Click to drill down into AU details
+
+Bottom Section: Risk Trends & Distribution
+Line chart: Residual risk trend over last 2 years (quarterly data points)
+Bar chart: Risk distribution by Theme (Retail, Corporate, Treasury, Support)
+Donut chart: Controls by effectiveness category
+
+Navigation:
+Header: CRAF logo, Assessment Period selector (dropdown), Refresh button
+Sidebar: Quick links to different dashboard views
+Footer: Last updated timestamp, data as of date
+
+Interactivity:
+All charts and metrics are clickable for drill-down
+Filters available: Business Area, Risk Rating, Theme
+Real-time vs Periodic view toggle switch
+Export button (placeholder - shown in future features)
+5.2 Risk Assessment Detail View
+Purpose: Show detailed risk assessment for a selected Assessment Unit.
+
+Layout:
+Header: AU name, current risk rating badge, comparison period
+Inherent Risk Section:
+Likelihood score breakdown with parameter contributions
+Impact score breakdown with parameter contributions
+Calculated inherent risk score and rating
+Control Environment Section:
+Control Quality Index (CQI) with category distribution
+Control Performance Index (CPI) with testing results
+Control Environment Rating calculation
+Residual Risk Section:
+Final residual risk calculation formula display
+Residual risk score and rating
+Comparison with previous period (if available)
+Obligations & Controls Table:
+List of obligations mapped to AU
+Associated controls with quality and performance scores
+Sortable and filterable
+5.3 Drill-Down Navigation Flow
+Four-level drill-down hierarchy:
+Enterprise Level: Executive Dashboard showing all AUs
+Theme Level: Filter to specific business theme (e.g., Retail Banking, Treasury)
+Assessment Unit Level: Detail view for selected AU (as described in 5.2)
+Obligation Level: Drill further into specific compliance obligation with associated controls
+
+Each level maintains context breadcrumb navigation for easy return to previous views.
+5.4 Comparison Views
+Year-over-Year Comparison:
+Side-by-side view of current year vs previous year
+Highlight changes in red (deterioration) or green (improvement)
+Show delta percentages for key metrics
+Available at Enterprise, Theme, and AU levels
+
+Before/After Control Implementation:
+Split-screen showing risk metrics before and after control implementation
+Used in Audit Finding Remediation scenario
+Shows impact of control improvements on residual risk
+Includes timeline of remediation activities
+5.5 Regulatory Compliance Status Dashboard
+Purpose: Track compliance with RBI regulations and returns.
+
+Components:
+RBI Compliance Score: Overall percentage of obligations in compliance
+Regulatory Returns Status: Table showing all returns (DSB, ALM, IRAC, etc.) with submission status
+Recent Breaches: List of compliance breaches in last 90 days with severity
+Upcoming Deadlines: Calendar view of regulatory submission deadlines
+Trend Chart: Compliance score over last 12 months
+
+6. Data Model & Entities
+This section defines the core data entities and their relationships in the CRAF system.
+6.1 Core Entities
+Entity
+Description
+Key Attributes
+Assessment Unit (AU)
+Business unit being assessed
+AU_ID, AU_Name, Theme, Business_Area, Owner
+Theme
+Grouping of related AUs
+Theme_ID, Theme_Name, Description
+Compliance Obligation
+Regulatory requirement
+Obligation_ID, Regulation_Source, Description, AU_ID
+Control
+Control activity mitigating risk
+Control_ID, Control_Name, Obligation_ID, Control_Type, Frequency
+Inherent Risk
+Risk before controls
+IR_ID, AU_ID, Likelihood_Score, Impact_Score, IR_Rating, Assessment_Date
+Control Quality
+Design effectiveness
+CQ_ID, Control_ID, Design_Parameters, CQA_Score, CQI
+Control Performance
+Operating effectiveness
+CP_ID, Control_ID, KCI_Result, Testing_Result, CPA_Score, CPI
+Residual Risk
+Risk after controls
+RR_ID, AU_ID, Inherent_Risk_Score, CER_Score, Residual_Risk_Score, RR_Rating
+Assessment Period
+Time period for assessment
+Period_ID, Period_Name, Start_Date, End_Date, Is_Current
+6.2 Assessment Unit Structure - 30+ AUs
+The demo includes 30+ Assessment Units across four business areas:
+
+Retail Banking (8 AUs):
+Retail Assets Group - Consumer lending, personal loans
+Retail Liabilities Group - Savings, current accounts, deposits
+Branch Banking Network - Branch operations and services
+Cards & Payment Systems - Credit cards, debit cards, payment processing
+Digital Banking - Internet banking, mobile banking
+Priority Banking - High net-worth individual services
+Rural Banking - Rural and agricultural banking
+Wealth Management - Investment advisory, portfolio management
+
+Corporate/Wholesale Banking (8 AUs):
+Wholesale Banking Group - Large corporate relationships
+SME Banking - Small and medium enterprise lending
+Trade Finance - Import/export financing, letters of credit
+Cash Management Services - Corporate treasury services
+Loan Syndication - Syndicated lending arrangements
+Project Finance - Infrastructure and project lending
+Financial Institutions Group - Banking relationships with other banks
+Corporate Advisory - M&A advisory, restructuring
+
+Treasury & Markets (8 AUs):
+Treasury Control Group - Treasury operations and accounting
+Asset Liability Management (ALM) - Balance sheet management
+Markets Group - Fixed income, forex, derivatives trading
+Proprietary Trading Group - Proprietary investment positions
+Custody Business - Securities custody services
+Investment Portfolio Management - Bank's investment portfolio
+Market Risk Management - Trading risk monitoring
+Regulatory Reporting (Treasury) - Treasury-related returns
+
+Support Functions (6+ AUs):
+Business Technology Group - IT systems and applications
+Information Security Group - Cybersecurity, data protection
+Human Resource Management - HR operations, payroll
+Compliance Group - Regulatory compliance monitoring
+Internal Audit Group - Internal audit function
+Operational Risk Management - Operational risk monitoring
+Legal & Secretarial - Legal affairs, company secretary
+Finance & Accounts - Financial accounting and reporting
+6.3 Sample Data Specifications
+Data characteristics for realistic demonstration:
+Assessment Units:
+30+ unique AUs with realistic names and structures
+Mapped to appropriate business areas and themes
+Each AU has designated owner/head
+Compliance Obligations:
+100+ obligations mapped across all AUs
+Emphasis on RBI regulations (Master Directions, circulars)
+Mix of high-frequency (daily/weekly) and periodic (monthly/quarterly) obligations
+Controls:
+300+ controls across all obligations
+Varied control types: Preventive/Detective, Manual/Automated
+Realistic control descriptions and frequencies
+Risk Scores:
+Inherent risk scores distributed across rating spectrum
+Some AUs intentionally high-risk to demonstrate remediation scenarios
+Year-over-year data for trend analysis
+Control Effectiveness:
+Mix of effective, adequate, and deficient controls
+Some controls showing deterioration for early warning demo
+Realistic KCI monitoring and testing results
+
+7. Database Schema
+This section defines the database structure for the CRAF system.
+7.1 Table Definitions
+Assessment Units Table:
+CREATE TABLE assessment_units (
+  au_id INT PRIMARY KEY AUTO_INCREMENT,
+  au_code VARCHAR(50) UNIQUE NOT NULL,
+  au_name VARCHAR(200) NOT NULL,
+  theme_id INT NOT NULL,
+  business_area VARCHAR(100),
+  owner_name VARCHAR(100),
+  description TEXT,
+  is_active BOOLEAN DEFAULT TRUE,
+  created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (theme_id) REFERENCES themes(theme_id)
+);
+
+Themes Table:
+CREATE TABLE themes (
+  theme_id INT PRIMARY KEY AUTO_INCREMENT,
+  theme_code VARCHAR(50) UNIQUE NOT NULL,
+  theme_name VARCHAR(100) NOT NULL,
+  description TEXT
+);
+
+Compliance Obligations Table:
+CREATE TABLE compliance_obligations (
+  obligation_id INT PRIMARY KEY AUTO_INCREMENT,
+  obligation_code VARCHAR(50) UNIQUE NOT NULL,
+  regulation_source VARCHAR(200),  -- e.g., 'RBI Master Direction on...'
+  regulation_ref VARCHAR(100),     -- e.g., 'RBI/2023-24/05'
+  obligation_desc TEXT NOT NULL,
+  frequency VARCHAR(50),            -- Daily, Weekly, Monthly, etc.
+  au_id INT NOT NULL,
+  criticality VARCHAR(50),          -- Critical, High, Medium, Low
+  is_active BOOLEAN DEFAULT TRUE,
+  FOREIGN KEY (au_id) REFERENCES assessment_units(au_id)
+);
+
+Controls Table:
+CREATE TABLE controls (
+  control_id INT PRIMARY KEY AUTO_INCREMENT,
+  control_code VARCHAR(50) UNIQUE NOT NULL,
+  control_name VARCHAR(200) NOT NULL,
+  control_desc TEXT,
+  obligation_id INT NOT NULL,
+  control_type VARCHAR(50),         -- Preventive, Detective
+  control_nature VARCHAR(50),        -- Manual, IT-driven, IT-based manual
+  control_frequency VARCHAR(50),
+  monitoring_mechanism VARCHAR(100), -- Maker-checker, automated, etc.
+  is_documented BOOLEAN,
+  owner_role VARCHAR(100),
+  is_active BOOLEAN DEFAULT TRUE,
+  FOREIGN KEY (obligation_id) REFERENCES compliance_obligations(obligation_id)
+);
+
+Inherent Risk Assessment Table:
+CREATE TABLE inherent_risk (
+  ir_id INT PRIMARY KEY AUTO_INCREMENT,
+  au_id INT NOT NULL,
+  assessment_period_id INT NOT NULL,
+  -- Likelihood Parameters
+  volume_growth_score INT,
+  complexity_score INT,
+  regulatory_returns_score INT,
+  compliance_breaches_score INT,
+  control_failures_score INT,
+  customer_complaints_score INT,
+  likelihood_score INT NOT NULL,   -- Calculated average, scaled
+  likelihood_rating VARCHAR(50),    -- Rare, Unlikely, Possible, Likely, Almost Certain
+  -- Impact Parameters
+  business_impact_score INT,
+  reputational_impact_score INT,
+  financial_penalty_score INT,
+  gl_impact_score INT,
+  impact_score INT NOT NULL,       -- Calculated weighted average
+  impact_rating VARCHAR(50),
+  -- Inherent Risk Calculation
+  inherent_risk_score INT NOT NULL, -- Likelihood * Impact
+  inherent_risk_rating VARCHAR(50), -- Extremely High, Very High, High, Minor, Insignificant
+  assessment_date DATE,
+  FOREIGN KEY (au_id) REFERENCES assessment_units(au_id),
+  FOREIGN KEY (assessment_period_id) REFERENCES assessment_periods(period_id)
+);
+
+Control Quality Assessment Table:
+CREATE TABLE control_quality (
+  cq_id INT PRIMARY KEY AUTO_INCREMENT,
+  control_id INT NOT NULL,
+  assessment_period_id INT NOT NULL,
+  -- Design Parameters
+  monitoring_score INT,            -- 1, 3, or 5
+  automation_score INT,            -- 1, 3, or 5
+  control_type_score INT,          -- 1, 3, or 5
+  documentation_score INT,         -- 1 or 5
+  cqa_raw_score INT,               -- Product of 4 parameters
+  cqa_scaled_score INT,            -- Scaled to 5/10/15/20/25
+  control_category VARCHAR(100),   -- Significantly Effective, Effective, etc.
+  FOREIGN KEY (control_id) REFERENCES controls(control_id),
+  FOREIGN KEY (assessment_period_id) REFERENCES assessment_periods(period_id)
+);
+
+Control Performance Assessment Table:
+CREATE TABLE control_performance (
+  cp_id INT PRIMARY KEY AUTO_INCREMENT,
+  control_id INT NOT NULL,
+  assessment_period_id INT NOT NULL,
+  kci_linked BOOLEAN,
+  kci_result VARCHAR(50),          -- Pass, Fail, NA
+  self_assessment_result VARCHAR(50), -- Pass, Pass with Exception, Fail, NA
+  control_testing_result VARCHAR(50),  -- Pass, Pass with Exception, Fail, Not Tested
+  cpa_score INT,                   -- Combined score from KCI & testing
+  cpa_scaled_score INT,            -- Scaled to 5/10/15/20/25
+  performance_category VARCHAR(100),
+  FOREIGN KEY (control_id) REFERENCES controls(control_id),
+  FOREIGN KEY (assessment_period_id) REFERENCES assessment_periods(period_id)
+);
+
+Control Environment Rating Table:
+CREATE TABLE control_environment_rating (
+  cer_id INT PRIMARY KEY AUTO_INCREMENT,
+  au_id INT NOT NULL,
+  assessment_period_id INT NOT NULL,
+  cqi_score DECIMAL(5,2),          -- Control Quality Index
+  cpi_score DECIMAL(5,2),          -- Control Performance Index
+  cer_score DECIMAL(5,2),          -- CQI * CPI
+  cer_rating VARCHAR(100),         -- Effective, Meets Requirements, etc.
+  FOREIGN KEY (au_id) REFERENCES assessment_units(au_id),
+  FOREIGN KEY (assessment_period_id) REFERENCES assessment_periods(period_id)
+);
+
+Residual Risk Table:
+CREATE TABLE residual_risk (
+  rr_id INT PRIMARY KEY AUTO_INCREMENT,
+  au_id INT NOT NULL,
+  assessment_period_id INT NOT NULL,
+  inherent_risk_score INT NOT NULL,
+  cer_score DECIMAL(5,2) NOT NULL,
+  residual_risk_score DECIMAL(5,2), -- IR / CER
+  residual_risk_rating VARCHAR(50), -- Well Controlled, Meets Requirement, etc.
+  aggregate_weight DECIMAL(5,2),
+  assessment_date DATE,
+  FOREIGN KEY (au_id) REFERENCES assessment_units(au_id),
+  FOREIGN KEY (assessment_period_id) REFERENCES assessment_periods(period_id)
+);
+
+7.2 Indexes & Constraints
+Performance Indexes:
+CREATE INDEX idx_au_theme ON assessment_units(theme_id);
+CREATE INDEX idx_obligation_au ON compliance_obligations(au_id);
+CREATE INDEX idx_control_obligation ON controls(obligation_id);
+CREATE INDEX idx_ir_period ON inherent_risk(assessment_period_id);
+CREATE INDEX idx_rr_period ON residual_risk(assessment_period_id);
+
+Unique Constraints:
+ALTER TABLE inherent_risk ADD UNIQUE(au_id, assessment_period_id);
+ALTER TABLE control_environment_rating ADD UNIQUE(au_id, assessment_period_id);
+ALTER TABLE residual_risk ADD UNIQUE(au_id, assessment_period_id);
+
+8. API Specifications
+REST API endpoints for the CRAF system. All endpoints return JSON format.
+8.1 Authentication
+For demo purposes, authentication is simplified. Production would use JWT tokens.
+POST /api/auth/login
+Request: { username, password }
+Response: { token, user_id, user_name, role }
+8.2 Dashboard APIs
+Executive Dashboard Data:
+GET /api/dashboard/executive
+Query Parameters: ?period_id={period_id}&view_mode={realtime|periodic}
+Response:
+{
+  overall_residual_risk_score: 45.2,
+  high_critical_risks_count: 8,
+  control_effectiveness_pct: 78.5,
+  compliance_breach_trend: [12, 10, 8, 7, 6],
+  risk_heatmap: [
+    { au_id, au_name, residual_risk_score, risk_rating, theme },
+    ...
+  ],
+  risk_trends: { labels: [...], data: [...] },
+  risk_distribution_by_theme: {...}
+}
+
+Assessment Unit Details:
+GET /api/assessment-units/{au_id}/detail
+Query Parameters: ?period_id={period_id}
+Response:
+{
+  au_info: { au_id, au_name, theme, business_area, owner },
+  inherent_risk: {
+    likelihood_score, likelihood_rating,
+    likelihood_parameters: {...},
+    impact_score, impact_rating,
+    impact_parameters: {...},
+    inherent_risk_score, inherent_risk_rating
+  },
+  control_environment: {
+    cqi_score, cpi_score, cer_score, cer_rating,
+    control_quality_distribution: {...},
+    control_performance_distribution: {...}
+  },
+  residual_risk: {
+    residual_risk_score, residual_risk_rating,
+    previous_period_score, change_pct
+  },
+  obligations: [...]
+}
+8.3 Risk Assessment APIs
+Get Inherent Risk:
+GET /api/inherent-risk
+Query Parameters: ?au_id={au_id}&period_id={period_id}
+
+Calculate Inherent Risk:
+POST /api/inherent-risk/calculate
+Request:
+{
+  au_id, period_id,
+  likelihood_parameters: { volume_growth, complexity, ... },
+  impact_parameters: { business_impact, reputational_impact, ... }
+}
+Response: { inherent_risk_score, inherent_risk_rating }
+
+Get Residual Risk:
+GET /api/residual-risk
+Query Parameters: ?au_id={au_id}&period_id={period_id}
+8.4 Control APIs
+GET /api/controls
+Query Parameters: ?au_id={au_id}&obligation_id={obligation_id}
+
+GET /api/controls/{control_id}/quality
+Response: Control quality assessment details
+
+GET /api/controls/{control_id}/performance
+Response: Control performance assessment details
+8.5 Comparison APIs
+GET /api/comparison/year-over-year
+Query Parameters: ?au_id={au_id}&current_period={id}&previous_period={id}
+
+GET /api/comparison/before-after-control
+Query Parameters: ?au_id={au_id}&control_id={control_id}
+8.6 Regulatory Compliance APIs
+GET /api/compliance/rbi-status
+Query Parameters: ?period_id={period_id}
+Response:
+{
+  overall_compliance_score: 94.5,
+  regulatory_returns: [
+    { return_name: 'DSB', status: 'Submitted', due_date, submitted_date },
+    ...
+  ],
+  recent_breaches: [...],
+  upcoming_deadlines: [...]
+}
+
+9. User Stories & Use Cases
+This section details the three priority business scenarios to be demonstrated.
+9.1 Scenario 1: Audit Finding Remediation
+User Story:
+As a Head of Compliance, I want to track and remediate audit findings systematically so that we can reduce residual risk and demonstrate control improvements to auditors.
+
+Background:
+Internal Audit has identified a control deficiency in the Trade Finance AU
+The finding indicates inadequate maker-checker controls for LC issuance
+Audit rating: Needs Improvement
+Required remediation within 90 days
+
+Demo Flow:
+Start at Executive Dashboard showing Trade Finance AU with High residual risk (red indicator)
+Drill down to Trade Finance AU detail view
+Show Inherent Risk assessment (score: 300, rating: Very High)
+Display Control Environment section with low CQI score (40%) due to control deficiency
+Navigate to specific obligation: 'RBI Master Direction on Trade Finance - LC Issuance'
+Show the deficient control with low quality rating (Significant Improvement Needed)
+Switch to 'Before/After' comparison view
+Demonstrate the control improvement plan:
+Before: Manual process, no maker-checker (Control Quality score: 1)
+After: Automated maker-checker implemented (Control Quality score: 25)
+Show impact on metrics:
+CQI improved from 40% to 75%
+Residual Risk reduced from 300 to 120 (High to Minor)
+AU status changed from Red to Yellow
+Display audit trail showing remediation steps and timeline
+Show early warning indicator no longer flagging this AU
+
+Acceptance Criteria:
+User can drill down from Enterprise → Trade Finance AU → LC Obligation → specific control
+Before/After comparison clearly shows improvement in control quality and residual risk
+All calculations automatically update based on control enhancement
+Visual indicators (colors) change appropriately with risk reduction
+9.2 Scenario 2: Control Failure Investigation
+User Story:
+As a Head of Operational Risk, I need to investigate control failures to identify root causes and prevent recurrence across similar controls bank-wide.
+
+Background:
+KCI monitoring has flagged a control failure in Retail Liabilities AU
+The failed control: Daily reconciliation of cash balances
+3 failures in past month, triggering early warning indicator
+Need to investigate and remediate immediately
+
+Demo Flow:
+Executive Dashboard shows early warning indicator for Retail Liabilities
+Click on early warning alert icon
+System highlights Retail Liabilities AU with deteriorating trend (amber alert)
+Drill to Retail Liabilities AU detail view
+Navigate to Controls section, filter by 'Recent Failures'
+Select failed control: 'Daily Cash Reconciliation'
+Show Control Performance Assessment:
+KCI Monitoring: 3 failures in last month (Fail status)
+Control Testing Result: Fail
+CPA score degraded from 25 to 5
+Control Performance Category: Significant Improvement Needed
+Display trend chart showing degradation over 3 months
+Show impact on AU-level metrics:
+CPI decreased from 80% to 55%
+Residual Risk increased from 50 to 95 (Medium to High)
+Demonstrate investigation steps:
+Review KCI failure details (dates, amounts, discrepancies)
+Identify pattern: Failures occur on month-end dates
+Root cause: System timeout during high volume
+Show remediation plan:
+Increase system resources for month-end processing
+Implement automated alerts for reconciliation delays
+Add secondary review control
+Simulate post-remediation state with improved CPI and reduced residual risk
+
+Acceptance Criteria:
+Early warning indicators prominently display AUs with control degradation
+User can filter controls by performance status
+Trend analysis shows degradation pattern over time
+System allows documentation of root cause and remediation plan
+Simulated remediation shows projected improvement in metrics
+9.3 Scenario 3: New Regulation Impact Assessment
+User Story:
+As a Group Chief Compliance Officer, I need to assess the impact of new RBI regulations on our risk profile so that we can allocate resources and plan compliance activities effectively.
+
+Background:
+RBI has issued new Master Direction on Digital Lending
+Affects multiple AUs: Digital Banking, Cards, Retail Assets
+New compliance obligations with 6-month implementation deadline
+Need to assess impact on inherent risk and control requirements
+
+Demo Flow:
+Start at Regulatory Compliance Dashboard
+Show notification of new RBI Master Direction (highlighted in 'Recent Regulations')
+Click to view regulation details:
+Regulation: RBI Master Direction on Digital Lending 2024
+Effective Date: [6 months from issue]
+Impacted AUs: 3 identified
+Navigate to 'Impact Assessment' workflow
+System displays list of affected AUs:
+Digital Banking - 5 new obligations
+Cards & Payment Systems - 3 new obligations
+Retail Assets (Digital Loans) - 7 new obligations
+Select Digital Banking AU for detailed assessment
+Show new obligations being added:
+'Ensure board-approved digital lending policy'
+'Implement automated credit assessment system'
+'Conduct periodic third-party audits of LSPs'
+Etc.
+Demonstrate Inherent Risk recalculation:
+Likelihood parameter updated: Regulatory Returns Count +5
+New inherent risk score calculated
+Potential risk increase if controls not implemented
+Show 'What-If' scenario modeling:
+Scenario A: No new controls → Residual Risk increases to Very High
+Scenario B: Basic controls → Residual Risk stays at High
+Scenario C: Comprehensive controls → Residual Risk managed at Medium
+Display recommended control framework:
+List of suggested controls to address new obligations
+Estimated implementation effort and timeline
+Resource requirements
+Show aggregated enterprise view:
+Total new obligations across bank: 15
+Estimated implementation cost: [qualitative]
+Projected residual risk impact if fully implemented
+
+Acceptance Criteria:
+New regulations can be easily added to system
+System identifies impacted AUs based on business area mapping
+Inherent risk automatically recalculates with new obligations
+What-if scenario modeling shows different control implementation options
+Enterprise-wide impact view aggregates all affected AUs
+Recommended controls can be added to AU control framework
+
+10. Technical Architecture
+This section outlines the recommended technical architecture for the CRAF prototype.
+10.1 Architecture Overview
+Three-tier web application architecture:
+Presentation Layer - Frontend
+Modern web interface using React.js or Vue.js
+Responsive design framework (Tailwind CSS or Bootstrap)
+Charting library: Chart.js or D3.js for visualizations
+State management: Redux or Vuex
+Application Layer - Backend
+Node.js with Express.js framework OR Python with Flask/FastAPI
+RESTful API architecture
+Business logic layer for CRAF calculations
+Authentication middleware (JWT)
+Data Layer
+Relational database: PostgreSQL or MySQL
+ORM: Sequelize (Node.js) or SQLAlchemy (Python)
+Database migrations for schema versioning
+10.2 Technology Stack Recommendation
+Recommended Stack: Modern JavaScript (MERN-like):
+Layer
+Technology
+Rationale
+Frontend
+React.js + TypeScript
+Component reusability, strong ecosystem, TypeScript for type safety
+UI Framework
+Tailwind CSS + Shadcn/ui
+Rapid development, professional banking theme, accessibility
+Charts
+Recharts + D3.js
+React-native charting, powerful custom visualizations
+Backend
+Node.js + Express.js
+JavaScript throughout stack, async handling, large ecosystem
+Database
+PostgreSQL
+ACID compliance, JSON support, excellent for complex queries
+10.3 Component Architecture
+Frontend Components:
+DashboardLayout - Main layout with header, sidebar, content area
+ExecutiveDashboard - Executive summary view
+RiskHeatmap - Visual risk heatmap grid component
+RiskTrendChart - Line chart for trend analysis
+AUDetailView - Assessment Unit detail page
+ComparisonView - Before/after and year-over-year comparisons
+ComplianceStatusDashboard - RBI compliance tracking
+DrillDownNavigation - Breadcrumb and navigation component
+EarlyWarningIndicators - Alert widgets
+
+Backend Modules:
+AuthService - Authentication and authorization
+RiskCalculationEngine - Core CRAF calculation logic
+InherentRiskService - Likelihood and Impact calculations
+ControlQualityService - CQI calculations
+ControlPerformanceService - CPI calculations
+ResidualRiskService - Final risk calculations
+DashboardService - Data aggregation for dashboards
+APIRouter - Route handling and middleware
+10.4 Deployment Architecture
+For Demo Environment:
+Single server deployment (development/staging configuration)
+Frontend and backend on same server
+Local PostgreSQL database
+Nginx as reverse proxy
+PM2 for Node.js process management
+
+Future Production Considerations (Out of Scope for Demo):
+Load-balanced web servers
+Separate application and database servers
+Redis for session management and caching
+Docker containerization
+Cloud deployment (AWS/Azure)
+
+11. Implementation Roadmap
+Phased 3-4 week development plan to deliver working prototype.
+11.1 Week 1: Foundation (Days 1-7)
+Deliverables:
+Finalize BRD and technical specifications
+Set up development environment
+Create database schema and populate with sample data (30+ AUs)
+Develop core calculation engine for CRAF methodology
+Build basic API framework
+
+Tasks:
+Day 1-2: Environment setup, technology stack installation
+Day 3-4: Database design, schema creation, sample data generation
+Day 4-5: Inherent Risk calculation engine development
+Day 6: Control Quality and Performance calculation engines
+Day 7: Residual Risk calculation and API endpoint creation
+
+Acceptance Criteria:
+Database fully populated with 30+ AUs, 100+ obligations, 300+ controls
+All CRAF calculations working correctly via API endpoints
+Unit tests passing for calculation engine
+11.2 Week 2: Core Features (Days 8-14)
+Deliverables:
+Complete API development for all endpoints
+Frontend framework and routing setup
+Executive Dashboard implementation
+Risk Assessment detail views
+
+Tasks:
+Day 8-9: Complete all API endpoints (dashboard, risk assessment, controls)
+Day 10-11: Frontend framework setup (React), routing, state management
+Day 12-13: Executive Dashboard development (KPIs, heatmap, trends)
+Day 14: AU Detail View implementation
+
+Acceptance Criteria:
+All API endpoints functional and returning correct data
+Executive Dashboard displays all KPIs and visualizations
+Navigation between views working
+11.3 Week 3: Integration & Advanced Features (Days 15-21)
+Deliverables:
+Drill-down navigation implementation
+Comparison views (year-over-year, before/after)
+Early warning indicators
+Regulatory compliance dashboard
+Three scenario implementations
+
+Tasks:
+Day 15-16: Four-level drill-down navigation (Enterprise → Theme → AU → Obligation)
+Day 17: Year-over-year comparison views
+Day 18: Before/after control implementation comparison
+Day 19: Early warning indicators development
+Day 20: RBI Compliance Status Dashboard
+Day 21: Scenario 1 implementation (Audit Finding Remediation)
+
+Acceptance Criteria:
+Full drill-down navigation operational
+All comparison views functional with realistic data
+Early warning indicators correctly identifying deteriorating AUs
+First business scenario fully demonstrable
+11.4 Week 4: Scenarios, Testing & Polish (Days 22-28)
+Deliverables:
+Remaining scenarios implementation
+Comprehensive testing and bug fixes
+UI/UX refinement and professional styling
+Demo preparation and rehearsal
+
+Tasks:
+Day 22: Scenario 2 implementation (Control Failure Investigation)
+Day 23: Scenario 3 implementation (New Regulation Impact Assessment)
+Day 24-25: End-to-end testing, bug fixes
+Day 26: UI/UX polish, professional banking theme refinement
+Day 27: Performance optimization, final data validation
+Day 28: Demo script preparation, dry run, final adjustments
+
+Acceptance Criteria:
+All three priority scenarios fully functional and demonstrable
+No critical bugs
+Professional UI matching banking industry standards
+15-20 minute demo flow smooth and compelling
+System ready for client presentation
+
+12. Acceptance Criteria
+The prototype will be considered complete and ready for demo when all criteria are met.
+12.1 Functional Acceptance
+Category
+Criteria
+Verification Method
+Data Coverage
+30+ Assessment Units across all business areas with complete data
+Database query count
+CRAF Calculations
+All risk calculations (Inherent, CQI, CPI, Residual) accurate per methodology
+Manual verification of sample calculations
+Executive Dashboard
+All 4 KPIs displayed correctly, risk heatmap shows all AUs
+Visual inspection
+Drill-Down
+4-level navigation works: Enterprise → Theme → AU → Obligation
+Test navigation path
+Comparisons
+Year-over-year and before/after views display correctly
+Visual inspection with sample data
+Early Warnings
+Indicators correctly flag deteriorating AUs and controls
+Verify alert logic with test data
+RBI Compliance
+Compliance dashboard shows realistic RBI obligations and status
+Review sample obligations
+Scenario 1
+Audit Finding Remediation scenario fully demonstrable in 3-4 minutes
+Demo walkthrough
+Scenario 2
+Control Failure Investigation scenario fully demonstrable in 3-4 minutes
+Demo walkthrough
+Scenario 3
+New Regulation Impact scenario fully demonstrable in 3-4 minutes
+Demo walkthrough
+12.2 Non-Functional Acceptance
+Category
+Criteria
+Target
+Performance
+Page load time
+< 2 seconds for dashboard views
+Performance
+API response time
+< 500ms for most endpoints
+Usability
+Navigation intuitive for non-technical users
+Stakeholder review feedback
+Visual Design
+Professional banking theme, consistent styling
+Design review approval
+Browser Compatibility
+Works in Chrome, Edge, Safari
+Test in each browser
+12.3 Demo Readiness
+15-20 minute demo flows smoothly without technical issues
+All visualizations render correctly on presentation screen
+Sample data is realistic and representative of banking operations
+Calculations produce logical results that tell a coherent story
+Presenter can navigate system confidently without hesitation
+System responds quickly during demo (no long load times)
+Backup plan available in case of technical difficulties
+
+13. Future Enhancements
+While excluded from the demo scope, these features should be highlighted in the product roadmap to show the client the full potential of the CRAF platform.
+13.1 Alerts & Notifications
+Automated Risk Alerts:
+Email/SMS notifications when residual risk exceeds thresholds
+Alerts for control failures and KCI breaches
+Early warning escalation to appropriate stakeholders
+Configurable alert rules based on business requirements
+Dashboard notification center with alert history
+
+Scheduled Reports:
+Automated monthly/quarterly risk reports to executives
+Regulatory compliance status reports
+Control effectiveness summary reports
+Customizable report templates
+13.2 Workflow Management
+Approval Workflows:
+Risk assessment approval process (AU Head → Compliance → GCCO)
+Control remediation plan approvals
+New obligation addition workflows
+Multi-level approval routing based on risk severity
+
+Task Management:
+Assign remediation tasks to owners
+Track task progress and completion
+Automated reminders for pending tasks
+Integration with task management systems
+13.3 Audit Trail & History
+Comprehensive Change Tracking:
+Complete audit log of all system changes
+User activity tracking (who did what, when)
+Risk score change history with reasons
+Control modification history
+Assessment period comparison history
+
+Compliance Documentation:
+Document repository linked to obligations
+Version control for compliance policies
+Evidence attachment for control testing
+Audit finding documentation and tracking
+13.4 Export & Reporting Capabilities
+Export Formats:
+PDF reports with executive summaries and detailed appendices
+Excel exports for further analysis
+PowerPoint export for board presentations
+CSV data exports for custom analytics
+
+Custom Report Builder:
+Drag-and-drop report designer
+Pre-built templates for common reports
+Scheduled report generation
+Distribution list management
+13.5 Integration Capabilities
+System Integrations (Future Production):
+Core Banking Systems - Automated data feeds for transaction volumes, accounts
+HRMS - Employee data for ownership and segregation of duties
+Document Management - Link compliance documents to obligations
+GRC Tools - Integration with existing risk management tools
+Email Systems - Notification and communication integration
+BI Tools - Data export to Tableau, Power BI, etc.
+13.6 Advanced Analytics
+Predictive Analytics:
+Machine learning models to predict risk trends
+Anomaly detection for unusual control performance patterns
+Risk forecasting based on historical data
+Predictive control failure analysis
+
+Benchmarking:
+Peer comparison across Assessment Units
+Industry benchmarking (anonymized data sharing)
+Best practice identification
+13.7 Mobile Application
+Mobile Features:
+iOS and Android native apps
+Risk dashboard on mobile
+Alerts and notifications
+Quick approval workflows
+Offline capability for field audits
+13.8 Advanced User Management
+Enterprise Features:
+Role-based access control (RBAC)
+Multi-factor authentication (MFA)
+Single Sign-On (SSO) integration
+Delegated administration
+User activity analytics
+
+Appendix A: Key RBI Regulatory References
+This appendix lists key RBI regulations incorporated in the CRAF framework.
+Regulation
+Reference
+Key Requirements
+Risk Management & Inter-Bank Dealings
+RBI/2016-17/76
+Risk governance, risk appetite framework, risk culture
+Corporate Governance
+RBI/2021-22/25
+Board responsibilities, management committees, fit & proper criteria
+Cyber Security Framework
+RBI/2016-17/05
+Cybersecurity policy, baseline security, incident response
+KYC/AML Standards
+RBI/2016-17/11
+Customer due diligence, ongoing monitoring, PEP identification
+Internal Capital Adequacy Assessment (ICAAP)
+Basel II/III Framework
+Capital planning, stress testing, risk measurement
+Regulatory Returns - DSB
+Monthly/Quarterly
+Balance sheet data, asset quality, capital adequacy
+Asset Liability Management (ALM)
+RBI/1999/147
+Liquidity risk, interest rate risk, maturity profiling
+Income Recognition & Asset Classification (IRAC)
+RBI/2021-22/49
+NPA classification, provisioning norms, restructuring
+Outsourcing Guidelines
+RBI/2006-07/374
+Vendor management, data security, business continuity
+Fraud Monitoring & Reporting
+RBI Circulars
+Fraud detection, reporting to RBI, preventive measures
+
+Appendix B: Glossary of Terms
+Term
+Definition
+Assessment Unit (AU)
+A business unit, functional area, or process being assessed for risk
+CER
+Control Environment Rating = CQI × CPI
+CPA
+Control Performance Assessment - evaluation of control operating effectiveness
+CPI
+Control Performance Index - overall measure of control performance
+CQA
+Control Quality Assessment - evaluation of control design effectiveness
+CQI
+Control Quality Index - overall measure of control design quality
+CRAF
+Converged Risk Assessment Framework - integrated compliance and ICOFR risk assessment
+DSB
+Data Structure for Banks - RBI regulatory return submission
+GCCO
+Group Chief Compliance Officer
+GRC
+Governance, Risk, and Compliance
+ICAAP
+Internal Capital Adequacy Assessment Process
+ICOFR
+Internal Controls over Financial Reporting (similar to SOX compliance)
+Inherent Risk
+Risk before considering controls (Likelihood × Impact)
+IRAC
+Income Recognition and Asset Classification
+KCI
+Key Compliance Indicator - metric used to monitor compliance effectiveness
+NPA
+Non-Performing Asset
+RBI
+Reserve Bank of India - India's central bank and banking regulator
+RCM
+Risk & Control Matrix - documentation of risks and associated controls
+Residual Risk
+Risk remaining after controls are applied (Inherent Risk ÷ CER)
+Theme
+Grouping of related Assessment Units (e.g., Retail Banking, Treasury)
+ALM
+Asset Liability Management
+KYC
+Know Your Customer
+AML
+Anti-Money Laundering
+NBFC
+Non-Banking Financial Company
+POC
+Proof of Concept
+
+
+
+--- End of Business Requirements Document ---
+
+
+This comprehensive BRD provides all specifications needed for successful CRAF prototype development. For questions or clarifications, contact the Business Analyst.

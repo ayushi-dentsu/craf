@@ -1,0 +1,328 @@
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Theme {
+  id          Int     @id @default(autoincrement())
+  code        String  @unique
+  name        String
+  description String?
+
+  assessmentUnits AssessmentUnit[]
+  obligations     ComplianceObligation[]
+
+  @@map("themes")
+}
+
+model AssessmentUnit {
+  id           Int      @id @default(autoincrement())
+  code         String   @unique
+  name         String
+  themeId      Int      @map("theme_id")
+  businessArea String   @map("business_area")
+  ownerName    String?  @map("owner_name")
+  description  String?
+  isActive     Boolean  @default(true) @map("is_active")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  theme              Theme                      @relation(fields: [themeId], references: [id])
+  obligations        ComplianceObligation[]
+  inherentRisks      InherentRisk[]
+  controlEnvRatings  ControlEnvironmentRating[]
+  residualRisks      ResidualRisk[]
+  ratingOverrides    RatingOverride[]
+  volumeDefinition   AUVolumeDefinition?
+  auThemes           AUThemeMapping[]
+  systemComplexities AUSystemComplexity[]
+  productComplexity  AUProductComplexity?
+
+  @@map("assessment_units")
+}
+
+model AUThemeMapping {
+  id      Int @id @default(autoincrement())
+  auId    Int @map("au_id")
+  themeId Int @map("theme_id")
+
+  au AssessmentUnit @relation(fields: [auId], references: [id])
+
+  @@map("au_theme_mappings")
+}
+
+model ComplianceObligation {
+  id                 Int     @id @default(autoincrement())
+  code               String  @unique
+  regulationSource   String  @map("regulation_source")
+  regulationRef      String? @map("regulation_ref")
+  regulationName     String? @map("regulation_name")
+  referenceParagraph String? @map("reference_paragraph")
+  description        String
+  ownerWithinAU      String? @map("owner_within_au")
+  frequency          String?
+  themeId            Int     @map("theme_id")
+  auId               Int     @map("au_id")
+  criticality        String?
+  isActive           Boolean @default(true) @map("is_active")
+
+  theme    Theme          @relation(fields: [themeId], references: [id])
+  au       AssessmentUnit @relation(fields: [auId], references: [id])
+  controls Control[]
+
+  @@map("compliance_obligations")
+}
+
+model Control {
+  id                  Int     @id @default(autoincrement())
+  code                String  @unique
+  name                String
+  description         String?
+  obligationId        Int     @map("obligation_id")
+  controlType         String  @map("control_type")
+  controlNature       String  @map("control_nature")
+  frequency           String?
+  monitoringMechanism String? @map("monitoring_mechanism")
+  isDocumented        Boolean @default(false) @map("is_documented")
+  ownerRole           String? @map("owner_role")
+  isActive            Boolean @default(true) @map("is_active")
+
+  obligation             ComplianceObligation @relation(fields: [obligationId], references: [id])
+  qualityAssessments     ControlQuality[]
+  performanceAssessments ControlPerformance[]
+
+  @@map("controls")
+}
+
+model AssessmentPeriod {
+  id        Int      @id @default(autoincrement())
+  name      String
+  startDate DateTime @map("start_date")
+  endDate   DateTime @map("end_date")
+  isCurrent Boolean  @default(false) @map("is_current")
+
+  inherentRisks       InherentRisk[]
+  controlQualities    ControlQuality[]
+  controlPerformances ControlPerformance[]
+  controlEnvRatings   ControlEnvironmentRating[]
+  residualRisks       ResidualRisk[]
+  ratingOverrides     RatingOverride[]
+
+  @@map("assessment_periods")
+}
+
+model InherentRisk {
+  id                      Int       @id @default(autoincrement())
+  auId                    Int       @map("au_id")
+  periodId                Int       @map("period_id")
+  volumeGrowthScore       Int       @map("volume_growth_score")
+  complexityScore         Int       @map("complexity_score")
+  regulatoryReturnsScore  Int       @map("regulatory_returns_score")
+  complianceBreachesScore Int       @map("compliance_breaches_score")
+  controlFailuresScore    Int       @map("control_failures_score")
+  customerComplaintsScore Int       @map("customer_complaints_score")
+  likelihoodRawAvg        Float     @map("likelihood_raw_avg")
+  likelihoodScore         Int       @map("likelihood_score")
+  likelihoodRating        String    @map("likelihood_rating")
+  businessImpactScore     Int       @map("business_impact_score")
+  reputationalImpactScore Int       @map("reputational_impact_score")
+  financialPenaltyScore   Int       @map("financial_penalty_score")
+  glImpactScore           Int       @map("gl_impact_score")
+  impactScore             Int       @map("impact_score")
+  impactRating            String    @map("impact_rating")
+  inherentRiskScore       Int       @map("inherent_risk_score")
+  inherentRiskRating      String    @map("inherent_risk_rating")
+  assessmentDate          DateTime? @map("assessment_date")
+
+  au     AssessmentUnit   @relation(fields: [auId], references: [id])
+  period AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@unique([auId, periodId])
+  @@map("inherent_risk")
+}
+
+model ControlQuality {
+  id                 Int    @id @default(autoincrement())
+  controlId          Int    @map("control_id")
+  periodId           Int    @map("period_id")
+  monitoringScore    Int    @map("monitoring_score")
+  automationScore    Int    @map("automation_score")
+  typeScore          Int    @map("type_score")
+  documentationScore Int    @map("documentation_score")
+  cqaRawScore        Int    @map("cqa_raw_score")
+  cqaScaledScore     Int    @map("cqa_scaled_score")
+  controlCategory    String @map("control_category")
+
+  control Control          @relation(fields: [controlId], references: [id])
+  period  AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@unique([controlId, periodId])
+  @@map("control_quality")
+}
+
+model ControlPerformance {
+  id                     Int     @id @default(autoincrement())
+  controlId              Int     @map("control_id")
+  periodId               Int     @map("period_id")
+  controlRiskType        String  @map("control_risk_type")
+  kciLinked              Boolean @map("kci_linked")
+  kciResult              String? @map("kci_result")
+  selfAssessmentResult   String  @map("self_assessment_result")
+  kciSelfAssessmentScore Int     @map("kci_self_assessment_score")
+  controlTestingResult   String  @map("control_testing_result")
+  controlTestingScore    Int     @map("control_testing_score")
+  cpaRawScore            Int     @map("cpa_raw_score")
+  cpaScaledScore         Int     @map("cpa_scaled_score")
+  performanceCategory    String  @map("performance_category")
+
+  control Control          @relation(fields: [controlId], references: [id])
+  period  AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@unique([controlId, periodId])
+  @@map("control_performance")
+}
+
+model ControlEnvironmentRating {
+  id             Int    @id @default(autoincrement())
+  auId           Int    @map("au_id")
+  periodId       Int    @map("period_id")
+  cqiWeightedAvg Float  @map("cqi_weighted_avg")
+  cqiScore       Float  @map("cqi_score")
+  cqiInterpScore Int    @map("cqi_interp_score")
+  cpiWeightedAvg Float  @map("cpi_weighted_avg")
+  cpiScore       Float  @map("cpi_score")
+  cpiInterpScore Int    @map("cpi_interp_score")
+  cerScore       Float  @map("cer_score")
+  cerRating      String @map("cer_rating")
+
+  au     AssessmentUnit   @relation(fields: [auId], references: [id])
+  period AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@unique([auId, periodId])
+  @@map("control_environment_rating")
+}
+
+model ResidualRisk {
+  id                 Int       @id @default(autoincrement())
+  auId               Int       @map("au_id")
+  periodId           Int       @map("period_id")
+  inherentRiskScore  Int       @map("inherent_risk_score")
+  cerScore           Float     @map("cer_score")
+  residualRiskScore  Float     @map("residual_risk_score")
+  residualRiskRating String    @map("residual_risk_rating")
+  aggregateResidual  Float?    @map("aggregate_residual")
+  aggregateRating    String?   @map("aggregate_rating")
+  assessmentDate     DateTime? @map("assessment_date")
+
+  au     AssessmentUnit   @relation(fields: [auId], references: [id])
+  period AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@unique([auId, periodId])
+  @@map("residual_risk")
+}
+
+model RatingOverride {
+  id               Int      @id @default(autoincrement())
+  auId             Int      @map("au_id")
+  periodId         Int      @map("period_id")
+  originalRating   String   @map("original_rating")
+  overriddenRating String   @map("overridden_rating")
+  reason           String
+  officerName      String   @map("officer_name")
+  officerRole      String   @map("officer_role")
+  createdAt        DateTime @default(now()) @map("created_at")
+
+  au     AssessmentUnit   @relation(fields: [auId], references: [id])
+  period AssessmentPeriod @relation(fields: [periodId], references: [id])
+
+  @@map("rating_overrides")
+}
+
+model AUVolumeDefinition {
+  id               Int    @id @default(autoincrement())
+  auId             Int    @unique @map("au_id")
+  volumeDefinition String @map("volume_definition")
+  currentVolume    Float? @map("current_volume")
+  previousVolume   Float? @map("previous_volume")
+  growthPercent    Float? @map("growth_percent")
+
+  au AssessmentUnit @relation(fields: [auId], references: [id])
+
+  @@map("au_volume_definitions")
+}
+
+model AUSystemComplexity {
+  id             Int    @id @default(autoincrement())
+  auId           Int    @map("au_id")
+  systemName     String @map("system_name")
+  interfaceCount Int    @map("interface_count")
+  tierCategory   String @map("tier_category")
+  changeRequests Int    @map("change_requests")
+  interfaceScore Int    @map("interface_score")
+  tierScore      Int    @map("tier_score")
+  changeScore    Int    @map("change_score")
+  weightedAvg    Float  @map("weighted_avg")
+  finalScore     Int    @map("final_score")
+
+  au AssessmentUnit @relation(fields: [auId], references: [id])
+
+  @@map("au_system_complexity")
+}
+
+model AUProductComplexity {
+  id                     Int    @id @default(autoincrement())
+  auId                   Int    @unique @map("au_id")
+  auType                 String @map("au_type")
+  easeOfUnderstanding    Int    @map("ease_of_understanding")
+  productVariants        Int?   @map("product_variants")
+  regulatoryGuidelines   Int    @map("regulatory_guidelines")
+  complexityOfGuidelines Int    @map("complexity_of_guidelines")
+  supervisoryFocus       Int    @map("supervisory_focus")
+  rawScore               Int    @map("raw_score")
+  category               String
+
+  au AssessmentUnit @relation(fields: [auId], references: [id])
+
+  @@map("au_product_complexity")
+}
+
+model User {
+  id            Int    @id @default(autoincrement())
+  username      String @unique
+  name          String
+  role          String
+  passwordHash  String @map("password_hash")
+  assignedAuIds Int[]  @map("assigned_au_ids")
+
+  @@map("users")
+}
+
+model RolePermission {
+  id       Int    @id @default(autoincrement())
+  role     String
+  resource String
+  action   String
+  scope    String
+
+  @@unique([role, resource, action])
+  @@map("role_permissions")
+}
+
+model MaterialityAssessment {
+  id                      Int    @id @default(autoincrement())
+  periodId                Int    @map("period_id")
+  profitBeforeTax         Float  @map("profit_before_tax")
+  totalAssets             Float  @map("total_assets")
+  revenueMateriality      Float  @map("revenue_materiality")
+  balanceSheetMateriality Float  @map("balance_sheet_materiality")
+  haircutPercent          Float  @default(25) @map("haircut_percent")
+  finalRevenueMateriality Float  @map("final_revenue_materiality")
+  finalBSMateriality      Float  @map("final_bs_materiality")
+  tolerableError          Float? @map("tolerable_error")
+
+  @@map("materiality_assessments")
+}
