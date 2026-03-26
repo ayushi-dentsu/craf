@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useObligationDetail } from '../hooks/useObligations';
+import { usePeriod } from '../hooks/usePeriod';
 import { cn } from '../lib/utils';
 
 function getRatingBadge(rating: string) {
@@ -22,8 +23,9 @@ function getScoreColor(score: number) {
 export function ObligationDetailPage() {
   const { obligationId } = useParams<{ obligationId: string }>();
   const navigate = useNavigate();
+  const { periodId } = usePeriod();
   const id = Number(obligationId);
-  const { data, isLoading, error } = useObligationDetail(id);
+  const { data, isLoading, error } = useObligationDetail(id, periodId);
 
   if (isLoading) {
     return (

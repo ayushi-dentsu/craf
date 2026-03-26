@@ -1,139 +1,144 @@
-import { ArrowRight, TrendingDown, TrendingUp } from 'lucide-react';
+import { useState } from 'react';
 import { cn } from '../../lib/utils';
-
-interface ScenarioMetrics {
-  label: string;
-  before: { value: number | string; rating?: string };
-  after: { value: number | string; rating?: string };
-  delta?: number | null;
-  higherIsBetter?: boolean;
-  unit?: string;
-}
-
-interface WhatIfScenario {
-  id: 1 | 2 | 3;
-  title: string;
-  auName: string;
-  description: string;
-  trigger: string;
-  metrics: ScenarioMetrics[];
-}
-
-const SCENARIO_DATA: Record<1 | 2 | 3, WhatIfScenario> = {
-  1: {
-    id: 1,
-    title: 'Audit Finding Remediation',
-    auName: 'Trade Finance',
-    description: 'A deficient LC control (CQA=1) is remediated to CQA=625. This shows the projected improvement in control quality and residual risk.',
-    trigger: 'CQA score improved from 1 → 625 (Significantly Effective)',
-    metrics: [
-      { label: 'CQA Score', before: { value: 1, rating: 'Significant Improvement Needed' }, after: { value: 625, rating: 'Significantly Effective' }, delta: 62400, higherIsBetter: true },
-      { label: 'CQI', before: { value: '40%' }, after: { value: '75%' }, delta: 87.5, higherIsBetter: true, unit: '%' },
-      { label: 'CER Score', before: { value: 4 }, after: { value: 75 }, delta: 1775, higherIsBetter: true },
-      { label: 'Inherent Risk Score', before: { value: 300, rating: 'Very High' }, after: { value: 300, rating: 'Very High' }, delta: 0 },
-      { label: 'Residual Risk Score', before: { value: 300, rating: 'Significant Improvement Needed' }, after: { value: 120, rating: 'Improvement Needed' }, delta: -60, higherIsBetter: false },
-    ],
-  },
-  2: {
-    id: 2,
-    title: 'Control Failure Investigation',
-    auName: 'Retail Liabilities',
-    description: 'CPA scores degraded over 3 consecutive months, triggering an early warning. Shows the cascading impact on CPI, CER, and residual risk.',
-    trigger: 'CPA degraded from 25 → 5 over 3 months',
-    metrics: [
-      { label: 'CPA Score', before: { value: 25, rating: 'Significantly Effective' }, after: { value: 5, rating: 'Significant Improvement Needed' }, delta: -80, higherIsBetter: true },
-      { label: 'CPI', before: { value: '80%' }, after: { value: '55%' }, delta: -31.25, higherIsBetter: true, unit: '%' },
-      { label: 'CER Score', before: { value: 80 }, after: { value: 36 }, delta: -55, higherIsBetter: true },
-      { label: 'Residual Risk Score', before: { value: 50, rating: 'Meets Requirement' }, after: { value: 95, rating: 'Improvement Needed' }, delta: 90, higherIsBetter: false },
-      { label: 'Aggregate Rating', before: { value: 'Low' }, after: { value: 'Medium' }, delta: null },
-    ],
-  },
-  3: {
-    id: 3,
-    title: 'New Regulation Impact',
-    auName: 'Digital Lending',
-    description: 'A new RBI regulation creates compliance gaps across 3 AUs. Shows the inherent risk increase and control gap analysis.',
-    trigger: 'New RBI circular adds 12 new compliance obligations',
-    metrics: [
-      { label: 'New Obligations', before: { value: 0 }, after: { value: 12 }, delta: null },
-      { label: 'Controls Gap', before: { value: 0 }, after: { value: 12, rating: 'No Control' }, delta: null },
-      { label: 'Regulatory Returns Score', before: { value: 10, rating: 'Unlikely' }, after: { value: 20, rating: 'Likely' }, delta: 100, higherIsBetter: false },
-      { label: 'Inherent Risk Score', before: { value: 150, rating: 'High' }, after: { value: 300, rating: 'Very High' }, delta: 100, higherIsBetter: false },
-      { label: 'Aggregate Residual Risk', before: { value: '15%', rating: 'Medium' }, after: { value: '55%', rating: 'High' }, delta: null },
-    ],
-  },
-};
+import type { WhatIfRegulationScenario, WhatIfAU, WhatIfScenarioOutcome } from '../../services/scenarios.service';
 
 interface WhatIfModelerProps {
-  scenarioId: 1 | 2 | 3;
+  data: WhatIfRegulationScenario;
 }
 
-function MetricCard({ metric }: { metric: ScenarioMetrics }) {
-  const improved =
-    metric.delta != null
-      ? metric.higherIsBetter
-        ? metric.delta > 0
-        : metric.delta < 0
-      : null;
+function ratingToColor(rating: string): string {
+  const r = rating.toLowerCase();
+  if (r.includes('extremely high')) return '#EF4444';
+  if (r.includes('very high')) return '#F97316';
+  if (r.includes('high') && !r.includes('negligible')) return '#EAB308';
+  if (r.includes('significant improvement')) return '#EF4444';
+  if (r.includes('improvement needed')) return '#F97316';
+  if (r.includes('meets requirement') || r.includes('partially')) return '#EAB308';
+  if (r.includes('well controlled') || r.includes('effective')) return '#22C55E';
+  if (r.includes('medium')) return '#EAB308';
+  if (r.includes('low')) return '#84CC16';
+  if (r.includes('negligible')) return '#22C55E';
+  return '#6B7280';
+}
 
+function strategyLabel(strategy: string): string {
+  switch (strategy) {
+    case 'none': return 'No Controls';
+    case 'basic': return 'Basic Controls';
+    case 'comprehensive': return 'Comprehensive Controls';
+    default: return strategy;
+  }
+}
+
+function ScenarioOutcomeCard({ outcome, isSelected }: { outcome: WhatIfScenarioOutcome; isSelected: boolean }) {
   return (
-    <div className="rounded-lg border border-border bg-card p-4">
-      <p className="text-xs font-medium text-muted-foreground mb-3">{metric.label}</p>
-      <div className="flex items-center gap-3">
-        {/* Before */}
-        <div className="flex-1 rounded-md bg-muted/30 p-2.5 text-center">
-          <p className="text-xs text-muted-foreground mb-0.5">Before</p>
-          <p className="text-sm font-bold text-foreground">{String(metric.before.value)}{metric.unit ?? ''}</p>
-          {metric.before.rating && (
-            <p className="text-xs text-muted-foreground mt-0.5 truncate">{metric.before.rating}</p>
-          )}
-        </div>
-
-        <ArrowRight className="h-4 w-4 shrink-0 text-muted-foreground" />
-
-        {/* After */}
-        <div
-          className={cn(
-            'flex-1 rounded-md p-2.5 text-center',
-            improved === true && 'bg-green-50 border border-green-200',
-            improved === false && 'bg-red-50 border border-red-200',
-            improved === null && 'bg-muted/30',
-          )}
-        >
-          <p className="text-xs text-muted-foreground mb-0.5">After</p>
-          <p className="text-sm font-bold text-foreground">{String(metric.after.value)}{metric.unit ?? ''}</p>
-          {metric.after.rating && (
-            <p className="text-xs text-muted-foreground mt-0.5 truncate">{metric.after.rating}</p>
-          )}
-        </div>
+    <div className={cn(
+      'rounded-lg border p-4 transition-all',
+      isSelected ? 'border-primary ring-1 ring-primary bg-primary/5' : 'border-border bg-card',
+    )}>
+      <div className="flex items-center justify-between mb-3">
+        <p className="text-sm font-semibold text-foreground">{outcome.scenarioLabel}</p>
+        <span className="rounded-full px-2 py-0.5 text-xs font-medium text-white" style={{ backgroundColor: ratingToColor(outcome.aggregateRating) }}>
+          {outcome.aggregateRating}
+        </span>
       </div>
+      <p className="text-xs text-muted-foreground mb-3">{outcome.description}</p>
+      <p className="text-xs text-muted-foreground mb-3">
+        Strategy: <span className="font-medium text-foreground">{strategyLabel(outcome.controlStrategy)}</span>
+      </p>
 
-      {/* Delta */}
-      {metric.delta != null && (
-        <div className="mt-2 flex justify-center">
-          <span
-            className={cn(
-              'inline-flex items-center gap-0.5 text-xs font-medium',
-              improved === true && 'text-green-600',
-              improved === false && 'text-red-600',
-              improved === null && 'text-muted-foreground',
-            )}
-          >
-            {improved === true ? (
-              <TrendingDown className="h-3 w-3" />
-            ) : improved === false ? (
-              <TrendingUp className="h-3 w-3" />
-            ) : null}
-            {metric.delta > 0 ? '+' : ''}{metric.delta.toFixed(1)}%
+      <div className="space-y-2">
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">CQI Score</span>
+          <span className="text-xs font-bold">{outcome.cqiScore.toFixed(1)}%</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">CPI Score</span>
+          <span className="text-xs font-bold">{outcome.cpiScore.toFixed(1)}%</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">CER Score</span>
+          <span className="text-xs font-bold">{outcome.cerScore}</span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">CER Rating</span>
+          <span className="text-xs font-medium" style={{ color: ratingToColor(outcome.cerRating) }}>{outcome.cerRating}</span>
+        </div>
+        <div className="flex justify-between border-t border-border pt-2">
+          <span className="text-xs text-muted-foreground">Residual Risk</span>
+          <span className="text-xs font-bold" style={{ color: ratingToColor(outcome.residualRiskRating) }}>
+            {outcome.residualRiskScore.toFixed(1)}
           </span>
         </div>
-      )}
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">RR Rating</span>
+          <span className="text-xs font-medium" style={{ color: ratingToColor(outcome.residualRiskRating) }}>
+            {outcome.residualRiskRating}
+          </span>
+        </div>
+        <div className="flex justify-between">
+          <span className="text-xs text-muted-foreground">Aggregate Residual</span>
+          <span className="text-xs font-bold">{outcome.aggregateResidual.toFixed(1)}%</span>
+        </div>
+      </div>
     </div>
   );
 }
 
-export function WhatIfModeler({ scenarioId }: WhatIfModelerProps) {
-  const scenario = SCENARIO_DATA[scenarioId];
+function AUSection({ au, selectedScenario, onSelectScenario }: {
+  au: WhatIfAU;
+  selectedScenario: number;
+  onSelectScenario: (idx: number) => void;
+}) {
+  return (
+    <div className="rounded-lg border border-border bg-card">
+      <div className="border-b border-border px-5 py-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h4 className="text-sm font-semibold text-foreground">{au.auName} ({au.auCode})</h4>
+            <p className="text-xs text-muted-foreground mt-0.5">
+              Current IR: {au.currentInherentRiskScore} · New obligations: {au.newObligationCount}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Scenario toggle */}
+      <div className="flex border-b border-border">
+        {au.scenarios.map((s, i) => (
+          <button
+            key={s.scenarioLabel}
+            onClick={() => onSelectScenario(i)}
+            className={cn(
+              'flex-1 px-3 py-2 text-xs font-medium transition-colors',
+              selectedScenario === i
+                ? 'bg-primary/10 text-primary border-b-2 border-primary'
+                : 'text-muted-foreground hover:bg-accent/50',
+            )}
+          >
+            {s.scenarioLabel}: {strategyLabel(s.controlStrategy)}
+          </button>
+        ))}
+      </div>
+
+      {/* 3 scenario cards side by side */}
+      <div className="grid grid-cols-1 gap-3 p-4 sm:grid-cols-3">
+        {au.scenarios.map((s, i) => (
+          <button key={s.scenarioLabel} onClick={() => onSelectScenario(i)} className="text-left">
+            <ScenarioOutcomeCard outcome={s} isSelected={selectedScenario === i} />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+export function WhatIfModeler({ data }: WhatIfModelerProps) {
+  const [selectedScenarios, setSelectedScenarios] = useState<Record<string, number>>({});
+
+  const getSelected = (auCode: string) => selectedScenarios[auCode] ?? 0;
+  const setSelected = (auCode: string, idx: number) =>
+    setSelectedScenarios((prev) => ({ ...prev, [auCode]: idx }));
 
   return (
     <div className="space-y-5">
@@ -141,26 +146,67 @@ export function WhatIfModeler({ scenarioId }: WhatIfModelerProps) {
       <div className="rounded-lg border border-border bg-card p-5">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-base font-semibold text-foreground">{scenario.title}</h3>
-            <p className="text-sm text-muted-foreground mt-1">{scenario.description}</p>
+            <h3 className="text-base font-semibold text-foreground">{data.title}</h3>
+            <p className="text-sm text-muted-foreground mt-1">{data.description}</p>
           </div>
           <span className="shrink-0 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
-            {scenario.auName}
+            {data.totalNewObligations} new obligations
           </span>
         </div>
         <div className="mt-3 rounded-md bg-yellow-50 border border-yellow-200 px-3 py-2">
-          <p className="text-xs font-medium text-yellow-800">Trigger: {scenario.trigger}</p>
+          <p className="text-xs font-medium text-yellow-800">
+            Regulation: {data.regulationName} — Affecting {data.affectedAUs.length} Assessment Units
+          </p>
         </div>
       </div>
 
-      {/* Projected outcomes grid */}
+      {/* Summary: 3 scenarios overview */}
+      <div className="rounded-lg border border-border bg-card p-5">
+        <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
+          What-If Scenarios Overview
+        </p>
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+          {['No Controls', 'Basic Controls', 'Comprehensive Controls'].map((label, i) => {
+            const strategy = ['none', 'basic', 'comprehensive'][i];
+            // Aggregate across all AUs for this strategy
+            const outcomes = data.affectedAUs.map((au) => au.scenarios[i]).filter(Boolean);
+            const avgRR = outcomes.length > 0
+              ? outcomes.reduce((sum, o) => sum + o.residualRiskScore, 0) / outcomes.length
+              : 0;
+            const worstRating = outcomes.length > 0
+              ? outcomes.reduce((worst, o) => {
+                  const order = ['Well Controlled', 'Meets Requirement', 'Improvement Needed', 'Significant Improvement Needed', 'No Control'];
+                  return order.indexOf(o.residualRiskRating) > order.indexOf(worst) ? o.residualRiskRating : worst;
+                }, outcomes[0].residualRiskRating)
+              : 'N/A';
+
+            return (
+              <div key={label} className="rounded-lg border border-border p-4 text-center">
+                <p className="text-sm font-semibold text-foreground mb-1">{label}</p>
+                <p className="text-xs text-muted-foreground mb-2">Strategy: {strategy}</p>
+                <div className="rounded-full mx-auto w-fit px-3 py-1 text-xs font-medium text-white" style={{ backgroundColor: ratingToColor(worstRating) }}>
+                  {worstRating}
+                </div>
+                <p className="text-xs text-muted-foreground mt-2">Avg RR: {avgRR.toFixed(1)}</p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Per-AU detailed breakdown */}
       <div>
         <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground mb-3">
-          Projected Outcomes
+          Detailed Projections by Assessment Unit
         </p>
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {scenario.metrics.map((metric) => (
-            <MetricCard key={metric.label} metric={metric} />
+        <div className="space-y-4">
+          {data.affectedAUs.map((au) => (
+            <AUSection
+              key={au.auCode}
+              au={au}
+              selectedScenario={getSelected(au.auCode)}
+              onSelectScenario={(idx) => setSelected(au.auCode, idx)}
+            />
           ))}
         </div>
       </div>

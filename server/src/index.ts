@@ -12,7 +12,9 @@ import earlyWarningsRoutes from './routes/early-warnings.routes.js';
 import ratingOverridesRoutes from './routes/rating-overrides.routes.js';
 import materialityRoutes from './routes/materiality.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
+import scenariosRoutes from './routes/scenarios.routes.js';
 import { notFoundHandler, errorHandler } from './middleware/error-handler.middleware.js';
+import { responseTimeLogger } from './middleware/response-time.middleware.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -26,6 +28,9 @@ app.use(cors({
   credentials: true,
 }));
 app.use(express.json());
+
+// Response time logging — logs duration and warns if >500ms (Req 28.4, 28.5)
+app.use(responseTimeLogger);
 
 app.get('/api/health', (_req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
@@ -44,6 +49,7 @@ app.use('/api/early-warnings', earlyWarningsRoutes);
 app.use('/api/rating-overrides', ratingOverridesRoutes);
 app.use('/api/materiality', materialityRoutes);
 app.use('/api/dashboard', dashboardRoutes);
+app.use('/api/scenarios', scenariosRoutes);
 
 // Catch-all for unmatched routes — must come AFTER all route registrations
 app.use(notFoundHandler);

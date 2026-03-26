@@ -1,8 +1,10 @@
 import { RBIComplianceDashboard } from '../components/compliance/RBIComplianceDashboard';
 import { useComplianceDashboard } from '../hooks/useCompliance';
+import { usePeriod } from '../hooks/usePeriod';
 
 export function CompliancePage() {
-  const { data, isLoading, error } = useComplianceDashboard();
+  const { periodId } = usePeriod();
+  const { data, isLoading, error } = useComplianceDashboard(periodId);
 
   if (isLoading) {
     return (

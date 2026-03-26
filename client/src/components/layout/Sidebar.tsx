@@ -1,7 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import {
   LayoutDashboard,
-  ShieldAlert,
   SlidersHorizontal,
   Scale,
   FlaskConical,
@@ -12,12 +11,11 @@ import {
 import { cn } from '../../lib/utils';
 
 const navItems = [
-  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard },
-  { to: '/dashboard/au', label: 'Risk Assessment', icon: ShieldAlert, end: false },
-  { to: '/compliance/rbi', label: 'Compliance', icon: Scale },
-  { to: '/comparison/yoy', label: 'Comparison', icon: SlidersHorizontal },
-  { to: '/scenarios/1', label: 'Scenarios', icon: FlaskConical },
-  { to: '/materiality', label: 'Materiality', icon: Landmark },
+  { to: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, end: false },
+  { to: '/compliance/rbi', label: 'Compliance', icon: Scale, end: true },
+  { to: '/comparison/yoy', label: 'Comparison', icon: SlidersHorizontal, end: true },
+  { to: '/scenarios', label: 'Scenarios', icon: FlaskConical, end: false },
+  { to: '/materiality', label: 'Materiality', icon: Landmark, end: true },
 ];
 
 interface SidebarProps {
@@ -39,7 +37,7 @@ export function Sidebar({ collapsed, onToggle }: SidebarProps) {
             <li key={item.to}>
               <NavLink
                 to={item.to}
-                end={item.end !== false}
+                end={item.end}
                 className={({ isActive }) =>
                   cn(
                     'flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors',

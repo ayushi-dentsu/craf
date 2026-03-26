@@ -5,11 +5,11 @@
  *
  * Category weights (based on CPA raw score):
  *   No Control (obligations without control): 100%
- *   Significant Improvement Needed (≥5 & <45): 80%
- *   Improvement Needed (≥45 & <225): 60%
- *   Meets Requirements (≥225 & <250): 40%
- *   Effective Control (≥250 & <375): 30%
- *   Significantly Effective Control (≥375): 20%
+ *   Significant Improvement Needed (<5): 80%
+ *   Improvement Needed (≥5 & <10): 60%
+ *   Meets Requirements (≥10 & <15): 40%
+ *   Effective Control (≥15 & <25): 30%
+ *   Significantly Effective Control (=25): 20%
  *
  * Interpretation (same as CQI):
  *   <40% → Significant Improvement Needed (score 1)
@@ -60,13 +60,22 @@ export interface CPICategoryBreakdown {
 /**
  * Determines the CPA category weight for a given raw score.
  * Req 14.1
+ *
+ * CPA raw score = KCI/SA score × testing score (range 1-25).
+ * Categories aligned to CPA raw score range:
+ *   No Control: 100%
+ *   Significant Improvement Needed (raw < 5): 80%
+ *   Improvement Needed (raw ≥ 5 & < 10): 60%
+ *   Meets Requirements (raw ≥ 10 & < 15): 40%
+ *   Effective Control (raw ≥ 15 & < 25): 30%
+ *   Significantly Effective Control (raw = 25): 20%
  */
 export function getCPACategoryWeight(cpaRawScore: number | null): number {
   if (cpaRawScore === null) return 1.0;
-  if (cpaRawScore < 45) return 0.8;
-  if (cpaRawScore < 225) return 0.6;
-  if (cpaRawScore < 250) return 0.4;
-  if (cpaRawScore < 375) return 0.3;
+  if (cpaRawScore < 5) return 0.8;
+  if (cpaRawScore < 10) return 0.6;
+  if (cpaRawScore < 15) return 0.4;
+  if (cpaRawScore < 25) return 0.3;
   return 0.2;
 }
 
@@ -98,10 +107,10 @@ export function computeWeightedAvgCPA(controls: CPIControlInput[]): { weightedAv
     weightedSum += weight;
 
     if (raw === null) breakdown.noControl++;
-    else if (raw < 45) breakdown.significantImprovementNeeded++;
-    else if (raw < 225) breakdown.improvementNeeded++;
-    else if (raw < 250) breakdown.meetsRequirements++;
-    else if (raw < 375) breakdown.effectiveControl++;
+    else if (raw < 5) breakdown.significantImprovementNeeded++;
+    else if (raw < 10) breakdown.improvementNeeded++;
+    else if (raw < 15) breakdown.meetsRequirements++;
+    else if (raw < 25) breakdown.effectiveControl++;
     else breakdown.significantlyEffectiveControl++;
   }
 

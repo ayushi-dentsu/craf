@@ -1,12 +1,17 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { KPICards } from '../components/dashboard/KPICards';
 import { RiskHeatmap } from '../components/dashboard/RiskHeatmap';
 import { TrendCharts } from '../components/dashboard/TrendCharts';
 import { useDashboard } from '../hooks/useDashboard';
+import { useThemes } from '../hooks/useThemes';
+import { usePeriod } from '../hooks/usePeriod';
 
 export function DashboardPage() {
+  const { periodId } = usePeriod();
   const [viewMode, setViewMode] = useState<'realtime' | 'periodic'>('periodic');
-  const { data, isLoading, error } = useDashboard(undefined, viewMode);
+  const { data, isLoading, error } = useDashboard(periodId, viewMode);
+  const { data: themes } = useThemes();
 
   if (isLoading) {
     return (
@@ -64,7 +69,28 @@ export function DashboardPage() {
       />
 
       {/* Risk Heatmap */}
-      <RiskHeatmap data={data.heatmap} />
+      <RiskHeatmap
+        data={data.heatmap}
+        themes={(themes ?? []).map((t) => ({ id: t.id, name: t.name }))}
+      />
+
+      {/* Theme Quick Navigation */}
+      {themes && themes.length > 0 && (
+        <div className="rounded-lg border border-border bg-card p-4">
+          <h3 className="mb-3 text-sm font-semibold text-foreground">Regulatory Themes</h3>
+          <div className="flex flex-wrap gap-2">
+            {themes.map((theme) => (
+              <Link
+                key={theme.id}
+                to={`/dashboard/theme/${theme.id}`}
+                className="rounded-md border border-input px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
+              >
+                {theme.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Trend Charts */}
       <TrendCharts

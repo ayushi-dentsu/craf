@@ -70,6 +70,8 @@ export function mapProductComplexityCategoryToScore(
       return 15;
     case ProductComplexityCategory.High:
       return 25;
+    default:
+      return 15; // Default to Medium if unknown
   }
 }
 

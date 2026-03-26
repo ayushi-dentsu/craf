@@ -52,6 +52,7 @@ model AUThemeMapping {
 
   au AssessmentUnit @relation(fields: [auId], references: [id])
 
+  @@index([auId])
   @@map("au_theme_mappings")
 }
 
@@ -74,6 +75,8 @@ model ComplianceObligation {
   au       AssessmentUnit @relation(fields: [auId], references: [id])
   controls Control[]
 
+  @@index([themeId])
+  @@index([auId])
   @@map("compliance_obligations")
 }
 
@@ -95,6 +98,7 @@ model Control {
   qualityAssessments     ControlQuality[]
   performanceAssessments ControlPerformance[]
 
+  @@index([obligationId])
   @@map("controls")
 }
 
@@ -142,6 +146,7 @@ model InherentRisk {
   period AssessmentPeriod @relation(fields: [periodId], references: [id])
 
   @@unique([auId, periodId])
+  @@index([auId, periodId])
   @@map("inherent_risk")
 }
 
@@ -161,6 +166,7 @@ model ControlQuality {
   period  AssessmentPeriod @relation(fields: [periodId], references: [id])
 
   @@unique([controlId, periodId])
+  @@index([controlId, periodId])
   @@map("control_quality")
 }
 
@@ -183,6 +189,7 @@ model ControlPerformance {
   period  AssessmentPeriod @relation(fields: [periodId], references: [id])
 
   @@unique([controlId, periodId])
+  @@index([controlId, periodId])
   @@map("control_performance")
 }
 
@@ -203,6 +210,7 @@ model ControlEnvironmentRating {
   period AssessmentPeriod @relation(fields: [periodId], references: [id])
 
   @@unique([auId, periodId])
+  @@index([auId, periodId])
   @@map("control_environment_rating")
 }
 
@@ -222,6 +230,7 @@ model ResidualRisk {
   period AssessmentPeriod @relation(fields: [periodId], references: [id])
 
   @@unique([auId, periodId])
+  @@index([auId, periodId])
   @@map("residual_risk")
 }
 
@@ -239,6 +248,7 @@ model RatingOverride {
   au     AssessmentUnit   @relation(fields: [auId], references: [id])
   period AssessmentPeriod @relation(fields: [periodId], references: [id])
 
+  @@index([auId, periodId])
   @@map("rating_overrides")
 }
 
@@ -270,6 +280,7 @@ model AUSystemComplexity {
 
   au AssessmentUnit @relation(fields: [auId], references: [id])
 
+  @@index([auId])
   @@map("au_system_complexity")
 }
 

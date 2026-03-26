@@ -3,6 +3,7 @@ import { ArrowLeft, BarChart3, ShieldCheck, Layers } from 'lucide-react';
 import { useThemeDetail } from '../hooks/useThemes';
 import { RiskHeatmap } from '../components/dashboard/RiskHeatmap';
 import { cn } from '../lib/utils';
+import { usePeriod } from '../hooks/usePeriod';
 
 function getRiskColor(score: number) {
   if (score >= 70) return 'text-red-500';
@@ -14,8 +15,9 @@ function getRiskColor(score: number) {
 
 export function ThemeDetailPage() {
   const { themeId } = useParams<{ themeId: string }>();
+  const { periodId } = usePeriod();
   const id = Number(themeId);
-  const { data, isLoading, error } = useThemeDetail(id);
+  const { data, isLoading, error } = useThemeDetail(id, periodId);
 
   if (isLoading) {
     return (

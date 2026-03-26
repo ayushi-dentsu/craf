@@ -514,37 +514,37 @@ This plan implements the CRAF prototype in phases: infrastructure and data model
     - Wire to `prisma db seed` command
     - _Requirements: 31.7_
 
-- [ ] 16. Checkpoint — Ensure seed data populates correctly and demo scenarios work
+- [x] 16. Checkpoint — Ensure seed data populates correctly and demo scenarios work
   - Ensure all tests pass, ask the user if questions arise.
 
-- [ ] 17. Integration wiring and final polish
-  - [ ] 17.1 Wire frontend pages to backend API
+- [x] 17. Integration wiring and final polish
+  - [x] 17.1 Wire frontend pages to backend API
     - Connect all page components to their respective API hooks
     - Ensure drill-down navigation works end-to-end (Enterprise → Theme → AU → Obligation)
     - Ensure breadcrumbs update correctly at each level
     - Verify period selector switches data across views
     - _Requirements: 20.1, 20.2, 20.3_
 
-  - [ ] 17.2 Wire demo scenario flows
+  - [x] 17.2 Wire demo scenario flows
     - Ensure Scenario 1 (Audit Finding Remediation) before/after view shows correct data and heatmap color change
     - Ensure Scenario 2 (Control Failure Investigation) early warning and trend chart display correctly
     - Ensure Scenario 3 (New Regulation Impact) what-if modeler shows 3 scenarios with projected outcomes
     - _Requirements: 24.1-24.4, 25.1-25.4, 26.1-26.4_
 
-  - [ ] 17.3 Implement shared UI components
+  - [x] 17.3 Implement shared UI components
     - Create `client/src/components/shared/DataTable.tsx` — reusable sortable/filterable table
     - Create `client/src/components/shared/Badge.tsx` — risk rating badges with color coding
     - Create `client/src/components/shared/TrafficLight.tsx` — Red/Yellow/Green indicator
     - Create `client/src/components/shared/FilterBar.tsx` — reusable filter bar component
     - _Requirements: 22.4_
 
-  - [ ] 17.4 Performance and response time verification
+  - [x] 17.4 Performance and response time verification
     - Ensure dashboard views respond within 2 seconds
     - Ensure API endpoints respond within 500 milliseconds
     - Add database indexes on (au_id, period_id) for assessment tables and (theme_id) for obligations
     - _Requirements: 28.4, 28.5_
 
-- [ ] 18. Final checkpoint — Ensure all tests pass and application runs end-to-end
+- [x] 18. Final checkpoint — Ensure all tests pass and application runs end-to-end
   - Ensure all tests pass, ask the user if questions arise.
 
 - [ ] 19. MVP2 tasks (future — Production Hardening)

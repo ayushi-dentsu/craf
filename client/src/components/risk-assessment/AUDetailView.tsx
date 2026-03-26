@@ -5,6 +5,7 @@ import {
 } from 'lucide-react';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { useAUDetail } from '../../hooks/useAssessmentUnits';
+import { usePeriod } from '../../hooks/usePeriod';
 import { LikelihoodBreakdown } from './LikelihoodBreakdown';
 import { ImpactBreakdown } from './ImpactBreakdown';
 import { cn } from '../../lib/utils';
@@ -225,8 +226,9 @@ function ObligationRow({ obligation, expanded, onToggle, onNavigate }: {
 
 export function AUDetailView() {
   const { auId } = useParams<{ auId: string }>();
+  const { periodId } = usePeriod();
   const id = Number(auId);
-  const { data, isLoading, error } = useAUDetail(id);
+  const { data, isLoading, error } = useAUDetail(id, periodId);
 
   if (isLoading) {
     return (

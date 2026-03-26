@@ -241,16 +241,16 @@ function computeProductComplexity(def: ProductComplexityDef, auType: string): { 
     : [def.easeOfUnderstanding, def.regulatoryGuidelines, def.complexityOfGuidelines, def.supervisoryFocus];
   const rawScore = factors.reduce((a, b) => a * b, 1);
 
+  // Req 8.4/8.5: Business Groups: ≤243 Low, 244-2187 Medium, >2188 High
+  // Ops/Support: ≤81 Low, 82-729 Medium, >729 High
   if (auType === 'Business Group') {
-    if (rawScore >= 1500) return { rawScore, category: 'Highly Complex' };
-    if (rawScore >= 500) return { rawScore, category: 'Complex' };
-    if (rawScore >= 100) return { rawScore, category: 'Moderate' };
-    return { rawScore, category: 'Simple' };
+    if (rawScore > 2187) return { rawScore, category: 'High' };
+    if (rawScore >= 244) return { rawScore, category: 'Medium' };
+    return { rawScore, category: 'Low' };
   } else {
-    if (rawScore >= 500) return { rawScore, category: 'Highly Complex' };
-    if (rawScore >= 150) return { rawScore, category: 'Complex' };
-    if (rawScore >= 50) return { rawScore, category: 'Moderate' };
-    return { rawScore, category: 'Simple' };
+    if (rawScore > 729) return { rawScore, category: 'High' };
+    if (rawScore >= 82) return { rawScore, category: 'Medium' };
+    return { rawScore, category: 'Low' };
   }
 }
 
@@ -260,9 +260,10 @@ function getAuType(businessArea: string): string {
 
 // Generate product complexity for all AUs with realistic values
 function generateProductComplexityDefs(): ProductComplexityDef[] {
+  const validScores = [1, 3, 9];
   return ALL_AUS.map((au) => {
     const isSupport = au.businessArea === 'Support Functions';
-    // Scores 1-5 for each parameter
+    // Req 8.2: Each parameter scored 1, 3, or 9
     const base = {
       auCode: au.code,
       easeOfUnderstanding: 3,
@@ -277,25 +278,25 @@ function generateProductComplexityDefs(): ProductComplexityDef[] {
     const lowComplexityCodes = ['AU010', 'AU017', 'AU073', 'AU084', 'AU085', 'AU087'];
 
     if (highComplexityCodes.includes(au.code)) {
-      base.easeOfUnderstanding = 4;
-      base.productVariants = isSupport ? null : 5;
-      base.regulatoryGuidelines = 5;
-      base.complexityOfGuidelines = 4;
-      base.supervisoryFocus = 5;
+      base.easeOfUnderstanding = 9;
+      base.productVariants = isSupport ? null : 9;
+      base.regulatoryGuidelines = 9;
+      base.complexityOfGuidelines = 9;
+      base.supervisoryFocus = 9;
     } else if (lowComplexityCodes.includes(au.code)) {
-      base.easeOfUnderstanding = 2;
-      base.productVariants = isSupport ? null : 2;
-      base.regulatoryGuidelines = 2;
-      base.complexityOfGuidelines = 2;
-      base.supervisoryFocus = 2;
+      base.easeOfUnderstanding = 1;
+      base.productVariants = isSupport ? null : 1;
+      base.regulatoryGuidelines = 1;
+      base.complexityOfGuidelines = 1;
+      base.supervisoryFocus = 1;
     } else {
-      // Deterministic variation based on AU code number
+      // Deterministic variation based on AU code number using valid scores
       const num = parseInt(au.code.replace('AU', ''), 10);
-      base.easeOfUnderstanding = (num % 4) + 2;
-      base.productVariants = isSupport ? null : (num % 3) + 2;
-      base.regulatoryGuidelines = ((num + 1) % 4) + 2;
-      base.complexityOfGuidelines = ((num + 2) % 3) + 2;
-      base.supervisoryFocus = ((num + 3) % 4) + 2;
+      base.easeOfUnderstanding = validScores[num % 3];
+      base.productVariants = isSupport ? null : validScores[(num + 1) % 3];
+      base.regulatoryGuidelines = validScores[(num + 2) % 3];
+      base.complexityOfGuidelines = validScores[(num + 1) % 3];
+      base.supervisoryFocus = validScores[num % 3];
     }
 
     return base;

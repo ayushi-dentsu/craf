@@ -1,8 +1,14 @@
 import { useState } from 'react';
 import { Shield, ChevronDown, User, LogOut } from 'lucide-react';
+import { usePeriod } from '../../hooks/usePeriod';
+
+const PERIODS = [
+  { id: undefined, label: 'FY 2024-25' },
+  { id: 1, label: 'FY 2023-24' },
+];
 
 export function Header() {
-  const [viewMode, setViewMode] = useState<'realtime' | 'periodic'>('periodic');
+  const { periodLabel, setPeriod } = usePeriod();
   const [periodOpen, setPeriodOpen] = useState(false);
   const [userOpen, setUserOpen] = useState(false);
 
@@ -24,41 +30,27 @@ export function Header() {
             onClick={() => setPeriodOpen(!periodOpen)}
             className="flex items-center gap-1 rounded-md border border-input px-3 py-1.5 text-sm hover:bg-accent"
           >
-            FY 2024-25
+            {periodLabel}
             <ChevronDown className="h-3.5 w-3.5" />
           </button>
           {periodOpen && (
             <div className="absolute right-0 top-full z-50 mt-1 w-40 rounded-md border border-border bg-card py-1 shadow-md">
-              <button
-                onClick={() => setPeriodOpen(false)}
-                className="w-full px-3 py-1.5 text-left text-sm font-medium hover:bg-accent"
-              >
-                FY 2024-25
-              </button>
-              <button
-                onClick={() => setPeriodOpen(false)}
-                className="w-full px-3 py-1.5 text-left text-sm hover:bg-accent"
-              >
-                FY 2023-24
-              </button>
+              {PERIODS.map((p) => (
+                <button
+                  key={p.label}
+                  onClick={() => {
+                    setPeriod(p.id, p.label);
+                    setPeriodOpen(false);
+                  }}
+                  className={`w-full px-3 py-1.5 text-left text-sm hover:bg-accent ${
+                    p.label === periodLabel ? 'font-medium' : ''
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
             </div>
           )}
-        </div>
-
-        {/* View Toggle */}
-        <div className="flex rounded-md border border-input text-sm">
-          <button
-            onClick={() => setViewMode('realtime')}
-            className={`px-3 py-1.5 ${viewMode === 'realtime' ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
-          >
-            Realtime
-          </button>
-          <button
-            onClick={() => setViewMode('periodic')}
-            className={`px-3 py-1.5 ${viewMode === 'periodic' ? 'bg-primary text-primary-foreground' : 'hover:bg-accent'}`}
-          >
-            Periodic
-          </button>
         </div>
 
         {/* User Menu */}

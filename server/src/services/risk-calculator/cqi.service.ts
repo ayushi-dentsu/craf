@@ -9,7 +9,7 @@
  *   Improvement Needed (≥15 & <30): 60%
  *   Meets Requirements (≥30 & <60): 40%
  *   Effective Control (≥60 & <125): 30%
- *   Significantly Effective Control (=125): 20%
+ *   Significantly Effective Control (≥125): 20%
  *
  * Interpretation:
  *   <40% → Significant Improvement Needed (score 1)
@@ -73,7 +73,7 @@ const CQA_CATEGORY_WEIGHTS: CategoryWeight[] = [
   { label: 'Improvement Needed', weight: 0.6, test: (raw) => raw !== null && raw >= 15 && raw < 30 },
   { label: 'Meets Requirements', weight: 0.4, test: (raw) => raw !== null && raw >= 30 && raw < 60 },
   { label: 'Effective Control', weight: 0.3, test: (raw) => raw !== null && raw >= 60 && raw < 125 },
-  { label: 'Significantly Effective Control', weight: 0.2, test: (raw) => raw !== null && raw === 125 },
+  { label: 'Significantly Effective Control', weight: 0.2, test: (raw) => raw !== null && raw >= 125 },
 ];
 
 /**
