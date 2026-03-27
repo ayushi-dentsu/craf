@@ -555,34 +555,34 @@ export async function seedRiskData(
   console.log(`  ✓ Seeded ${cerCount} control environment rating records`);
   console.log(`  ✓ Seeded ${rrCount} residual risk records`);
 
-  // 2. Materiality assessments
-  const mat1 = calculateMateriality({ profitBeforeTax: 15000, totalAssets: 1200000, haircutPercent: 25, tolerableError: 50 });
+  // 2. Materiality assessments (realistic ICICI-scale figures in ₹ Crores)
+  const mat1 = calculateMateriality({ profitBeforeTax: 40_000, totalAssets: 19_00_000, haircutPercent: 25, tolerableError: 1_500 });
   await prisma.materialityAssessment.create({
     data: {
       periodId: prevPeriod.id,
-      profitBeforeTax: 15000,
-      totalAssets: 1200000,
+      profitBeforeTax: 40_000,
+      totalAssets: 19_00_000,
       revenueMateriality: mat1.revenueMateriality,
       balanceSheetMateriality: mat1.balanceSheetMateriality,
       haircutPercent: 25,
       finalRevenueMateriality: mat1.finalRevenueMateriality,
       finalBSMateriality: mat1.finalBSMateriality,
-      tolerableError: 50,
+      tolerableError: 1_500,
     },
   });
 
-  const mat2 = calculateMateriality({ profitBeforeTax: 18000, totalAssets: 1400000, haircutPercent: 25, tolerableError: 50 });
+  const mat2 = calculateMateriality({ profitBeforeTax: 46_000, totalAssets: 22_00_000, haircutPercent: 25, tolerableError: 1_700 });
   await prisma.materialityAssessment.create({
     data: {
       periodId: currPeriod.id,
-      profitBeforeTax: 18000,
-      totalAssets: 1400000,
+      profitBeforeTax: 46_000,
+      totalAssets: 22_00_000,
       revenueMateriality: mat2.revenueMateriality,
       balanceSheetMateriality: mat2.balanceSheetMateriality,
       haircutPercent: 25,
       finalRevenueMateriality: mat2.finalRevenueMateriality,
       finalBSMateriality: mat2.finalBSMateriality,
-      tolerableError: 50,
+      tolerableError: 1_700,
     },
   });
   console.log('  ✓ Seeded 2 materiality assessments');

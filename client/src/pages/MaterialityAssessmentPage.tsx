@@ -1,16 +1,11 @@
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { MaterialityPage } from '../components/materiality/MaterialityPage';
-import { getMateriality, saveMateriality, getSignificantAccounts } from '../services/materiality.service';
+import { getMateriality, saveMateriality } from '../services/materiality.service';
 
 export function MaterialityAssessmentPage() {
   const { data: materialityData, isLoading, error } = useQuery({
     queryKey: ['materiality'],
     queryFn: () => getMateriality(),
-  });
-
-  const { data: accountsData } = useQuery({
-    queryKey: ['materiality', 'significant-accounts'],
-    queryFn: () => getSignificantAccounts(),
   });
 
   const saveMutation = useMutation({ mutationFn: saveMateriality });
@@ -37,7 +32,6 @@ export function MaterialityAssessmentPage() {
       )}
       <MaterialityPage
         data={materialityData as Parameters<typeof MaterialityPage>[0]['data']}
-        significantAccounts={Array.isArray(accountsData) ? (accountsData as Parameters<typeof MaterialityPage>[0]['significantAccounts']) : []}
         onSave={(values) => saveMutation.mutate(values)}
         isSaving={saveMutation.isPending}
       />
