@@ -15,14 +15,24 @@ import { listAssessmentUnits } from '../../services/assessment-units.service';
 
 // ── Score option helpers ──
 
-const SCORE_135 = [
-  { value: 1, label: '1 — Low' },
-  { value: 3, label: '3 — Medium' },
-  { value: 5, label: '5 — High' },
+const MONITORING_OPTIONS = [
+  { value: 1, label: '1 — Manual, no maker-checker' },
+  { value: 3, label: '3 — Manual maker-checker / IT-based manual' },
+  { value: 5, label: '5 — Automated maker-checker (MRC+IT) / HLC / Fully automated' },
 ];
-const SCORE_15 = [
-  { value: 1, label: '1 — No' },
-  { value: 5, label: '5 — Yes' },
+const AUTOMATION_OPTIONS = [
+  { value: 1, label: '1 — Completely manual' },
+  { value: 3, label: '3 — IT-based manual' },
+  { value: 5, label: '5 — Completely IT driven' },
+];
+const TYPE_OPTIONS = [
+  { value: 1, label: '1 — Detective, lower frequency' },
+  { value: 3, label: '3 — Detective, same frequency' },
+  { value: 5, label: '5 — Preventive' },
+];
+const DOC_OPTIONS = [
+  { value: 1, label: '1 — No documentation' },
+  { value: 5, label: '5 — Well-documented' },
 ];
 
 function ScoreSelect({
@@ -75,10 +85,10 @@ function CQAEditor({ control, periodId, onSaved }: {
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-        <ScoreSelect label="Monitoring" value={monitoring} options={SCORE_135} onChange={setMonitoring} />
-        <ScoreSelect label="Automation" value={automation} options={SCORE_135} onChange={setAutomation} />
-        <ScoreSelect label="Type (Prev/Det)" value={type} options={SCORE_135} onChange={setType} />
-        <ScoreSelect label="Documented" value={documentation} options={SCORE_15} onChange={setDocumentation} />
+        <ScoreSelect label="Monitoring" value={monitoring} options={MONITORING_OPTIONS} onChange={setMonitoring} />
+        <ScoreSelect label="Automation" value={automation} options={AUTOMATION_OPTIONS} onChange={setAutomation} />
+        <ScoreSelect label="Preventive / Detective" value={type} options={TYPE_OPTIONS} onChange={setType} />
+        <ScoreSelect label="Documentation" value={documentation} options={DOC_OPTIONS} onChange={setDocumentation} />
       </div>
       <div className="flex items-center gap-4">
         <span className="text-xs text-muted-foreground">Raw: {raw}</span>

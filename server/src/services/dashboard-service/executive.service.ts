@@ -24,7 +24,7 @@ const prisma = new PrismaClient();
 
 /**
  * Map residual risk aggregate rating to heatmap color.
- * Req 19.2: Red=Extremely High, Orange=Very High, Yellow=High, LightGreen=Minor, Green=Insignificant
+ * Req 19.2: Red=Extremely High, Orange=High, Yellow=Medium, LightGreen=Low, Green=Negligible
  */
 export function ratingToColor(rating: string): string {
   switch (rating) {

@@ -10,7 +10,7 @@ interface RiskHeatmapProps {
   themes?: { id: number; name: string }[];
 }
 
-const RISK_RATINGS = ['Extremely High', 'Very High', 'High', 'Medium', 'Low', 'Negligible'];
+const RISK_RATINGS = ['Extremely High', 'High', 'Medium', 'Low', 'Negligible'];
 
 const BUSINESS_AREAS = [
   BusinessArea.RetailBanking,
@@ -157,10 +157,10 @@ export function RiskHeatmap({ data, themes = [] }: RiskHeatmapProps) {
         <span className="text-xs text-muted-foreground">Legend:</span>
         {[
           { label: 'Extremely High', color: '#EF4444' },
-          { label: 'Very High', color: '#F97316' },
-          { label: 'High', color: '#EAB308' },
-          { label: 'Minor', color: '#84CC16' },
-          { label: 'Insignificant', color: '#22C55E' },
+          { label: 'High', color: '#F97316' },
+          { label: 'Medium', color: '#EAB308' },
+          { label: 'Low', color: '#84CC16' },
+          { label: 'Negligible', color: '#22C55E' },
         ].map((l) => (
           <div key={l.label} className="flex items-center gap-1">
             <span className="inline-block h-3 w-3 rounded" style={{ backgroundColor: l.color }} />
