@@ -10,6 +10,7 @@ import { CompliancePage } from './pages/CompliancePage';
 import { ComparisonPage } from './pages/ComparisonPage';
 import { ScenariosPage } from './pages/ScenariosPage';
 import { MaterialityAssessmentPage } from './pages/MaterialityAssessmentPage';
+import { RiskCalculatorPageWrapper } from './pages/RiskCalculatorPage';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/comparison/yoy" element={<ComparisonPage />} />
           <Route path="/scenarios" element={<ScenariosPage />} />
           <Route path="/materiality" element={<MaterialityAssessmentPage />} />
+          <Route path="/risk-calculator" element={<RiskCalculatorPageWrapper />} />
         </Route>
       </Routes>
     </PeriodProvider>

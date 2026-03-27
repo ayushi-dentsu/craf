@@ -2,8 +2,20 @@ import { Router, type Request, type Response, type NextFunction } from 'express'
 import { PrismaClient } from '@prisma/client';
 import { authenticate } from '../middleware/auth.middleware.js';
 import { authorize } from '../middleware/rbac.middleware.js';
-import { validateQuery, validateParams } from '../middleware/validation.middleware.js';
+import { validateQuery, validateParams, validateBody } from '../middleware/validation.middleware.js';
 import { NotFoundError } from '../middleware/error-handler.middleware.js';
+import {
+  calculateCQA,
+  calculateCQI,
+  calculateCPA,
+  calculateCPI,
+  calculateCER,
+  calculateResidualRisk,
+  aggregateResidualRisk,
+  type CQIControlInput,
+  type CPIControlInput,
+} from '../services/risk-calculator/index.js';
+import { ControlRiskType, KCIResult, SelfAssessmentResult, ControlTestingResult } from '../types/enums.js';
 
 const router = Router();
 const prisma = new PrismaClient();
@@ -152,6 +164,224 @@ router.get(
       });
 
       res.json({ control, performanceAssessments });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+// ── Recalculate CER + Residual Risk for an AU after CQA/CPA change ──
+
+async function recalculateAU(auId: number, periodId: number) {
+  // Gather all controls for this AU
+  const obligations = await prisma.complianceObligation.findMany({
+    where: { auId },
+    include: { controls: true },
+  });
+  const controlIds = obligations.flatMap((o) => o.controls.map((c) => c.id));
+
+  const cqaRecords = await prisma.controlQuality.findMany({
+    where: { controlId: { in: controlIds }, periodId },
+  });
+  const cpaRecords = await prisma.controlPerformance.findMany({
+    where: { controlId: { in: controlIds }, periodId },
+  });
+
+  // CQI
+  const cqiInputs: CQIControlInput[] = cqaRecords.map((r) => ({ cqaRawScore: r.cqaRawScore }));
+  const obligationsWithoutControl = obligations.filter(
+    (o) => o.controls.length === 0,
+  ).length;
+  for (let i = 0; i < obligationsWithoutControl; i++) {
+    cqiInputs.push({ cqaRawScore: null });
+  }
+  const cqi = calculateCQI(cqiInputs);
+
+  // CPI
+  const cpiInputs: CPIControlInput[] = cpaRecords.map((r) => ({ cpaRawScore: r.cpaRawScore }));
+  for (let i = 0; i < obligationsWithoutControl; i++) {
+    cpiInputs.push({ cpaRawScore: null });
+  }
+  const cpi = calculateCPI(cpiInputs);
+
+  // CER
+  const cer = calculateCER({ cqiInterpScore: cqi.interpScore, cpiInterpScore: cpi.interpScore });
+
+  // Upsert CER
+  await prisma.controlEnvironmentRating.upsert({
+    where: { auId_periodId: { auId, periodId } },
+    update: {
+      cqiWeightedAvg: cqi.weightedAvg,
+      cqiScore: cqi.cqiScore,
+      cqiInterpScore: cqi.interpScore,
+      cpiWeightedAvg: cpi.weightedAvg,
+      cpiScore: cpi.cpiScore,
+      cpiInterpScore: cpi.interpScore,
+      cerScore: cer.cerScore,
+      cerRating: cer.rating,
+    },
+    create: {
+      auId,
+      periodId,
+      cqiWeightedAvg: cqi.weightedAvg,
+      cqiScore: cqi.cqiScore,
+      cqiInterpScore: cqi.interpScore,
+      cpiWeightedAvg: cpi.weightedAvg,
+      cpiScore: cpi.cpiScore,
+      cpiInterpScore: cpi.interpScore,
+      cerScore: cer.cerScore,
+      cerRating: cer.rating,
+    },
+  });
+
+  // Residual Risk
+  const ir = await prisma.inherentRisk.findUnique({
+    where: { auId_periodId: { auId, periodId } },
+  });
+  if (ir) {
+    const rr = calculateResidualRisk({
+      inherentRiskScore: ir.inherentRiskScore,
+      cerScore: cer.cerScore,
+    });
+    const allRatings = cqiInputs.map(() => rr.rating);
+    const agg = aggregateResidualRisk({ ratings: allRatings });
+
+    await prisma.residualRisk.upsert({
+      where: { auId_periodId: { auId, periodId } },
+      update: {
+        inherentRiskScore: ir.inherentRiskScore,
+        cerScore: cer.cerScore,
+        residualRiskScore: rr.residualRiskScore,
+        residualRiskRating: rr.rating,
+        aggregateResidual: agg.aggregateResidual,
+        aggregateRating: agg.aggregateRating,
+        assessmentDate: new Date(),
+      },
+      create: {
+        auId,
+        periodId,
+        inherentRiskScore: ir.inherentRiskScore,
+        cerScore: cer.cerScore,
+        residualRiskScore: rr.residualRiskScore,
+        residualRiskRating: rr.rating,
+        aggregateResidual: agg.aggregateResidual,
+        aggregateRating: agg.aggregateRating,
+        assessmentDate: new Date(),
+      },
+    });
+  }
+
+  return { cqi, cpi, cer };
+}
+
+// POST /api/controls/:controlId/quality — set CQA inputs, recalculate pipeline
+router.post(
+  '/:controlId/quality',
+  authorize('controls', 'write'),
+  validateParams(controlIdParamsSchema),
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const controlId = Number(req.params.controlId);
+      const { periodId, monitoringScore, automationScore, typeScore, documentationScore } = req.body;
+
+      const control = await prisma.control.findUnique({
+        where: { id: controlId },
+        include: { obligation: { select: { auId: true } } },
+      });
+      if (!control) throw new NotFoundError(`Control ${controlId} not found.`);
+
+      const cqa = calculateCQA({ monitoringScore, automationScore, typeScore, documentationScore });
+
+      await prisma.controlQuality.upsert({
+        where: { controlId_periodId: { controlId, periodId } },
+        update: {
+          monitoringScore,
+          automationScore,
+          typeScore,
+          documentationScore,
+          cqaRawScore: cqa.rawScore,
+          cqaScaledScore: cqa.scaledScore,
+          controlCategory: cqa.category,
+        },
+        create: {
+          controlId,
+          periodId,
+          monitoringScore,
+          automationScore,
+          typeScore,
+          documentationScore,
+          cqaRawScore: cqa.rawScore,
+          cqaScaledScore: cqa.scaledScore,
+          controlCategory: cqa.category,
+        },
+      });
+
+      const cascade = await recalculateAU(control.obligation.auId, periodId);
+
+      res.json({ cqa, cascade });
+    } catch (error) {
+      next(error);
+    }
+  },
+);
+
+// POST /api/controls/:controlId/performance — set CPA inputs, recalculate pipeline
+router.post(
+  '/:controlId/performance',
+  authorize('controls', 'write'),
+  validateParams(controlIdParamsSchema),
+  async (req: Request, res: Response, next: NextFunction) => {
+    try {
+      const controlId = Number(req.params.controlId);
+      const { periodId, controlRiskType, kciLinked, kciResult, selfAssessmentResult, controlTestingResult } = req.body;
+
+      const control = await prisma.control.findUnique({
+        where: { id: controlId },
+        include: { obligation: { select: { auId: true } } },
+      });
+      if (!control) throw new NotFoundError(`Control ${controlId} not found.`);
+
+      const cpa = calculateCPA({
+        controlRiskType: controlRiskType as ControlRiskType,
+        kciLinked,
+        kciResult: kciResult as KCIResult | null,
+        selfAssessmentResult: selfAssessmentResult as SelfAssessmentResult,
+        controlTestingResult: controlTestingResult as ControlTestingResult,
+      });
+
+      await prisma.controlPerformance.upsert({
+        where: { controlId_periodId: { controlId, periodId } },
+        update: {
+          controlRiskType,
+          kciLinked,
+          kciResult,
+          selfAssessmentResult,
+          kciSelfAssessmentScore: cpa.kciSelfAssessmentScore,
+          controlTestingResult,
+          controlTestingScore: cpa.controlTestingScore,
+          cpaRawScore: cpa.rawScore,
+          cpaScaledScore: cpa.scaledScore,
+          performanceCategory: cpa.category,
+        },
+        create: {
+          controlId,
+          periodId,
+          controlRiskType,
+          kciLinked,
+          kciResult,
+          selfAssessmentResult,
+          kciSelfAssessmentScore: cpa.kciSelfAssessmentScore,
+          controlTestingResult,
+          controlTestingScore: cpa.controlTestingScore,
+          cpaRawScore: cpa.rawScore,
+          cpaScaledScore: cpa.scaledScore,
+          performanceCategory: cpa.category,
+        },
+      });
+
+      const cascade = await recalculateAU(control.obligation.auId, periodId);
+
+      res.json({ cpa, cascade });
     } catch (error) {
       next(error);
     }

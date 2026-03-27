@@ -5,6 +5,7 @@ import {
   Scale,
   FlaskConical,
   Landmark,
+  Calculator,
   ChevronLeft,
   ChevronRight,
 } from 'lucide-react';
@@ -16,6 +17,7 @@ const navItems = [
   { to: '/comparison/yoy', label: 'Comparison', icon: SlidersHorizontal, end: true },
   { to: '/scenarios', label: 'Scenarios', icon: FlaskConical, end: false },
   { to: '/materiality', label: 'Materiality', icon: Landmark, end: true },
+  { to: '/risk-calculator', label: 'Risk Calculator', icon: Calculator, end: true },
 ];
 
 interface SidebarProps {

@@ -79,6 +79,43 @@ const PERMISSIONS: PermissionDef[] = [
   { role: 'CGAdvisory', resource: 'comparison', action: 'read', scope: 'all' },
   { role: 'AUHead', resource: 'comparison', action: 'read', scope: 'assigned' },
   { role: 'ComplianceMonitoring', resource: 'comparison', action: 'read', scope: 'all' },
+
+  // Themes — read access for all roles that have dashboard read
+  { role: 'GCCO', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'GCO', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'HeadCompliance', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'HeadCPR', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'CGAdvisory', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'AUHead', resource: 'themes', action: 'read', scope: 'all' },
+  { role: 'ComplianceMonitoring', resource: 'themes', action: 'read', scope: 'all' },
+
+  // Inherent Risk — read for all, write for GCCO
+  { role: 'GCCO', resource: 'inherent-risk', action: 'read', scope: 'all' },
+  { role: 'GCCO', resource: 'inherent-risk', action: 'write', scope: 'all' },
+  { role: 'GCO', resource: 'inherent-risk', action: 'read', scope: 'all' },
+  { role: 'HeadCompliance', resource: 'inherent-risk', action: 'read', scope: 'all' },
+  { role: 'HeadCPR', resource: 'inherent-risk', action: 'read', scope: 'all' },
+  { role: 'CGAdvisory', resource: 'inherent-risk', action: 'read', scope: 'all' },
+  { role: 'AUHead', resource: 'inherent-risk', action: 'read', scope: 'assigned' },
+  { role: 'ComplianceMonitoring', resource: 'inherent-risk', action: 'read', scope: 'all' },
+
+  // Residual Risk — read for all
+  { role: 'GCCO', resource: 'residual-risk', action: 'read', scope: 'all' },
+  { role: 'GCO', resource: 'residual-risk', action: 'read', scope: 'all' },
+  { role: 'HeadCompliance', resource: 'residual-risk', action: 'read', scope: 'all' },
+  { role: 'HeadCPR', resource: 'residual-risk', action: 'read', scope: 'all' },
+  { role: 'CGAdvisory', resource: 'residual-risk', action: 'read', scope: 'all' },
+  { role: 'AUHead', resource: 'residual-risk', action: 'read', scope: 'assigned' },
+  { role: 'ComplianceMonitoring', resource: 'residual-risk', action: 'read', scope: 'all' },
+
+  // Early Warnings — read for all
+  { role: 'GCCO', resource: 'early-warnings', action: 'read', scope: 'all' },
+  { role: 'GCO', resource: 'early-warnings', action: 'read', scope: 'all' },
+  { role: 'HeadCompliance', resource: 'early-warnings', action: 'read', scope: 'all' },
+  { role: 'HeadCPR', resource: 'early-warnings', action: 'read', scope: 'all' },
+  { role: 'CGAdvisory', resource: 'early-warnings', action: 'read', scope: 'all' },
+  { role: 'AUHead', resource: 'early-warnings', action: 'read', scope: 'assigned' },
+  { role: 'ComplianceMonitoring', resource: 'early-warnings', action: 'read', scope: 'all' },
 ];
 
 export async function seedRolePermissions(prisma: PrismaClient): Promise<void> {
